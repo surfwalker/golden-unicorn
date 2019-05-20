@@ -38,3 +38,8 @@ body {
 .sliceEnd:hover {
   fill: blue !important;
 }
+
+#spinButton {
+  display: block;
+  margin-top: 525px;
+}
