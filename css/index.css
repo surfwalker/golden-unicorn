@@ -41,12 +41,38 @@ main {
 	margin: 30px auto;
 }
 
+img {
+	display: block; 
+	margin-top: 100px;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#user-info {
+	margin-left: auto; 
+	margin-right: auto;
+	width: 300px;
+	margin-top: 80px;
+  background-color: black;
+}
+
+fieldset {
+  color: gold;
+  font-size: 90%;
+}
+
+#submit-user-info {
+	background: black;
+	color: gold;
+  font-weight: bold;
+}
+
 button {
 	padding: 10px 30px;
 	background: #000;
 	color: #fff;
-	border-radius: 3px;
-	font-size: 20px;
+	border-radius: 2px;
+	font-size: 18px;
 	transition: 350ms;
 }
 
