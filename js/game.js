@@ -18,6 +18,7 @@ var spinButton = document.getElementById('spinButton');
 function SliceEnd(num) {
   this.id = 'sliceEnd_' + num;
   
+  // eslint-disable-next-line no-trailing-spaces
   // Every time you continue from where you left off, 
   // so the first one would be 0 - (300/numslices)
   // second one would be (1*300/numslices) - (2*300/numslices)
