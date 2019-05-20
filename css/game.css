@@ -1,0 +1,40 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #000000;
+}
+
+#roulette {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#wrapper {
+  width: 1500px;
+  text-align: left;
+}
+
+#centerCircle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 100px;
+  left: 100px;
+  background-color: black;
+  border-radius: 300px;
+  opacity: 0.5;
+}
+
+.sliceEnd {
+  stroke: #C0C0C0;
+  stroke-width: 1px;
+}
+
+.sliceEnd:hover {
+  fill: blue !important;
+}
