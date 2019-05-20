@@ -1,0 +1,79 @@
+h1{
+    /* display: inline-block; */
+    /* padding: .4em; */
+    font-family: Arial Black, Gadget, sans-serif;
+    color: whitesmoke;  
+    font-size: 50px;
+    /* background-color: rgb(171, 188, 190); */
+    text-align: center;
+    margin-left: 350px;
+    margin-right: 440px;
+   
+}
+
+body{
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('../img/tarantula-nebula.jpg');
+    background-size: 120em;
+}
+.total-body{
+    background-color: black;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    width: 800px;
+    height: 460px;
+    padding: 10px;
+   position: relative;
+   margin-left: 180px;
+   
+}
+
+
+#alex-box{
+    background-color: whitesmoke;
+    height: 450px;
+    width: 260px;
+    border:black;
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+
+   
+}
+
+.text-alex{
+    font-family: Arial Black, Gadget, sans-serif;
+    text-align: center;
+
+}
+
+#sarah-box{
+        background-color: whitesmoke;
+        height: 450px;
+        width: 260px;
+        border:black;
+        border-style: solid;
+        border-width: 2px;
+        float:left;
+}
+.text-sarah{
+    font-family: Arial Black, Gadget, sans-serif;
+    text-align: center;
+
+}
+#sara-box{
+    background-color: whitesmoke;
+    height: 450px;
+    width: 260px;
+    border:black;
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+    
+    
+}
+.text-sara{
+    font-family: Arial Black, Gadget, sans-serif;
+    text-align: center;
+}
+
