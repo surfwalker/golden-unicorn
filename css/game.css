@@ -10,13 +10,14 @@ body {
   width: 500px;
   height: 500px;
   position: absolute;
-  top: 0px;
-  left: 0px;
 }
 
 #wrapper {
-  width: 1500px;
-  text-align: left;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 #centerCircle {
@@ -40,6 +41,35 @@ body {
 }
 
 #spinButton {
+  position: absolute;
   display: block;
-  margin-top: 525px;
+  top: 132px;
+  left: 515px;
+}
+
+#arrowImage {
+  position: absolute;
+  top: 150px;
+  left: 460px;
+  width: 140px;
+  height: 125px;
+}
+
+#markerDiv {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  color: cyan;
+  top: 250px;
+  left: 465px;
+  visibility: hidden;
+}
+
+.sliceRefPoint {
+  fill: transparent;
+}
+
+.pow {
+  position: absolute;
+  transition: all .2s ease-out;
 }
