@@ -1,13 +1,17 @@
 var svgns = 'http://www.w3.org/2000/svg';
-var svgxlink = 'http://www.w3.org/1999/xlink'
+var svgxlink = 'http://www.w3.org/1999/xlink';
 var sliceEnds = [];
 var numSlices = 12; // How many slices do we want
+var spins = 7;
 var slicesContainer = document.getElementById('slicesContainer');
 var sliceSize = 300 / numSlices;
 var markerRect = document.getElementById('markerDiv').getBoundingClientRect();
 var wrapperEl = document.getElementById('wrapper');
-var unicornImageUrl = "http://cdn.pixabay.com/photo/2016/03/29/22/12/unicorn-1289544_960_720.png";
-var catImageUrl = "https://cdn.pixabay.com/photo/2016/04/06/17/42/silhouette-1312357_960_720.png";
+var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-512.png';
+var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
+var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
+var winnerSlice = '';
+
 
 // Get the wheel disc that we are rotating
 // We start at angle 0, and every 10ms add 2 degrees
@@ -23,8 +27,10 @@ var spinButton = document.getElementById('spinButton');
 function SliceEnd(num) {
   this.id = 'sliceEnd_' + num;
   this.isCat = false;
+  this.isGolden = false;
+  this.isUnicorn = true;
   this.cashValue = 100;
-  
+
   // eslint-disable-next-line no-trailing-spaces
   // Every time you continue from where you left off, 
   // so the first one would be 0 - (300/numslices)
@@ -35,32 +41,44 @@ function SliceEnd(num) {
   // Store the svg object in case we want to use it later
   var svgForSlice = this.createSvgSlice(num);
 
+  this.turnIntoCat = function(doAnimation) {
+    var iconId = this.id + '_icon';
+    var iconEl = document.getElementById(iconId);
+    if (!this.isCat) {
+      this.isCat = true;
+      this.isUnicorn = false;
+      this.cashValue = 0;
+
+      if (doAnimation) {
+        // Do a pow animation where the image is right now
+        var iconRect = iconEl.getBoundingClientRect();
+        var wrapperRect = wrapperEl.getBoundingClientRect();
+        doPow(iconRect.left - wrapperRect.left, iconRect.top - wrapperRect.top);
+
+        // When the pow is biggest, change the image
+        setTimeout(function() {
+          iconEl.setAttributeNS(svgxlink, 'href', catImageUrl);
+        }, 400);
+      } else {
+        iconEl.setAttributeNS(svgxlink, 'href', catImageUrl);
+      }
+    }
+  };
+
+  this.turnIntoGoldenUnicorn = function() {
+    var iconId = this.id + '_icon';
+    var iconEl = document.getElementById(iconId);
+    this.cashValue = 500;
+    this.isGolden = true;
+    this.isUnicorn = false;
+    iconEl.setAttributeNS(svgxlink, 'href', goldenUnicornImageUrl);
+  };
+
+
   // Add the svg element to the DOM
   slicesContainer.appendChild(svgForSlice);
 }
- 
-SliceEnd.prototype.turnIntoCat = function(doAnimation) {
-  var iconId = this.id + "_icon";
-  var iconEl = document.getElementById(iconId);
-  if (!this.isCat) {
-    this.isCat = true;
-    this.cashValue = 0;
 
-    if (doAnimation) {
-      // Do a pow animation where the image is right now
-      var iconRect = iconEl.getBoundingClientRect();
-      var wrapperRect = wrapperEl.getBoundingClientRect();
-      doPow(iconRect.left - wrapperRect.left, iconRect.top - wrapperRect.top);
-      
-      // When the pow is biggest, change the image
-      setTimeout(function() {
-        iconEl.setAttributeNS(svgxlink, 'href', catImageUrl);
-      }, 400);
-    } else {
-      iconEl.setAttributeNS(svgxlink, 'href', catImageUrl);
-    }
-  }
-}
 
 SliceEnd.prototype.createSvgSlice = function(num) {
   var g = document.createElementNS(svgns, 'g');
@@ -69,7 +87,7 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   var sliceEnd = document.createElementNS(svgns, 'path');
   sliceEnd.setAttribute('id', this.id);
   sliceEnd.setAttribute('class', 'sliceEnd');
-  
+
   // First line to
   var radius = 230;
   var x1 = 250 + radius * Math.cos(Math.PI * (-90 + this.offset) / 150);
@@ -79,7 +97,7 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   var y2 = 250 + radius * Math.sin(Math.PI * (-90 + sliceSize + this.offset) / 150);
 
   sliceEnd.setAttribute(
-    'd', 
+    'd',
     'M 250 250 ' + // M = set current position 250,250, (center)
       'L ' + x1 + ' ' + y1 + ' ' + // L = line to, x1 y1, probably left side of slice
       'A ' + radius + ' ' + radius + ' 0 0 1 ' + x2 + ' ' + y2 + // A = Arc to (outer part of the circle)
@@ -89,7 +107,7 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   var xAvgPt1Pt2 = ((x1 + x2) / 2);
   var yAvgPt1Pt2 = ((y1 + y2) / 2);
 
-  // "Average" the current location with the center to bring it 
+  // "Average" the current location with the center to bring it
   // closer to the center
   var xIcon = xAvgPt1Pt2 * 0.85 + 250 * 0.15;
   var yIcon = yAvgPt1Pt2 * 0.85 + 250 * 0.15;
@@ -98,20 +116,20 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   // icon number num (out of the numSlices)
   var iconAngle = ((360 / numSlices) * num);
 
-  // Create the slice icon 
+  // Create the slice icon
   var sliceIcon = document.createElementNS(svgns, 'image');
   sliceIcon.setAttributeNS(svgxlink, 'href', unicornImageUrl);
-  sliceIcon.setAttribute('id', this.id + "_icon");
+  sliceIcon.setAttribute('id', this.id + '_icon');
   sliceIcon.setAttribute('class', 'sliceIcon');
   sliceIcon.setAttribute('width', '50');
   sliceIcon.setAttribute('height', '50');
   sliceIcon.setAttribute('x', xIcon - 25);
   sliceIcon.setAttribute('y', yIcon - 25);
   sliceIcon.setAttribute(
-    'transform', 
+    'transform',
     'rotate(' + iconAngle + ' ' + xIcon + ' ' + yIcon + ')'
   );
-  
+
   // The frequency is the rate at which the color hue changes
   var frequency = .4;
   var red = Math.sin(frequency * num + 0) * 127 + 128;
@@ -120,7 +138,7 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   sliceEnd.setAttribute('fill', 'rgb('+red+','+green+','+blue+')');
 
   var referencePoint = document.createElementNS(svgns, 'rect');
-  referencePoint.setAttribute('id', this.id + "_ref");
+  referencePoint.setAttribute('id', this.id + '_ref');
   referencePoint.setAttribute('class', 'sliceRefPoint');
   referencePoint.setAttribute('width', '1');
   referencePoint.setAttribute('height', '1');
@@ -150,22 +168,33 @@ function onTimerTick() {
 
   if (rotationSpeed > 0 && rotationSpeed < 0.01) {
     rotationSpeed = 0;
-    var winnerSlice = getRightmostSlice();
+    winnerSlice = getRightmostSlice();
     console.log('You just won $' + winnerSlice.cashValue);
   }
+  // if (winnerSlice.isCat) {
+  //   for (var i = 0; i < numSlices; i++) {
+  //     if (sliceEnds[i].isUnicorn) {
+  //       sliceEnds[i].turnIntoCat(true);
+  //     }
+  //   }
+  // }
 }
 
 function handleSpinButton(event){
 // Set the timer that will update every X ms
   // event.preventDefault();
-  console.log('this is the beginning of the handler');
-  rotationSpeed = getRandomIntInclusive(50, 150);
+  spins--;
+  if (spins > 0) {
+    rotationSpeed = getRandomIntInclusive(50, 150);
+  } else {
+    rotationSpeed = 0;
+  }
 }
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
 function getRightmostSlice() {
@@ -181,15 +210,34 @@ function getRightmostSlice() {
     );
 
     // If that distance between that reference point and the marker is smaller
-    // than all the distances we've had so far 
+    // than all the distances we've had so far
     if (distance < closestDistance) {
       // Replace the smallest so far with this one
       closestSlice = sliceEnds[i];
       closestDistance = distance;
     }
   }
+  if (closestSlice.isCat){
+    var unicornArray = formUnicornArray();
+    console.log(unicornArray);
+    var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
+    console.log(unicornToChange);
+    unicornToChange.turnIntoCat(true);
+    unicornArray = [];
+  }
   return closestSlice;
 }
+
+function formUnicornArray(){
+  var unicornArray = [];
+  for (var i = 0; i < numSlices; i++){
+    if (sliceEnds[i].isUnicorn){
+      unicornArray.push(sliceEnds[i]);
+    }
+  }
+  return unicornArray;
+}
+
 
 // Does a POW animation at the specified location
 function doPow(x, y) {
@@ -200,29 +248,29 @@ function doPow(x, y) {
   var bigSizeW = 260;
   var bigSizeH = bigSizeW * (smallSizeH/smallSizeW);
 
-  var img = document.createElement("img");
+  var img = document.createElement('img');
   img.setAttribute('src', 'img/pow.png');
   img.classList.add('pow');
-  img.style.width = smallSizeW + "px";
-  img.style.height = smallSizeH + "px";
-  img.style.left = x + "px";
-  img.style.top = y + "px";
+  img.style.width = smallSizeW + 'px';
+  img.style.height = smallSizeH + 'px';
+  img.style.left = x + 'px';
+  img.style.top = y + 'px';
   wrapperEl.appendChild(img);
 
   // Start growing animation after 200ms
   setTimeout(function() {
-    img.style.width = bigSizeW + "px";
-    img.style.height = bigSizeH + "px";
+    img.style.width = bigSizeW + 'px';
+    img.style.height = bigSizeH + 'px';
 
     // Adjust ourselves so we would be centered
     // So we wouldn't grow only to our bottom right
-    img.style.left = (x - ((bigSizeW - smallSizeW) / 2)) + "px";
-    img.style.top = (y - ((bigSizeH - smallSizeH) / 2)) + "px"; 
+    img.style.left = (x - ((bigSizeW - smallSizeW) / 2)) + 'px';
+    img.style.top = (y - ((bigSizeH - smallSizeH) / 2)) + 'px';
 
     // Start fading after the growing animation is over
     setTimeout(function() {
-      img.style.opacity = "0";
-      
+      img.style.opacity = '0';
+
       // Remove the element after the animation is over
       setTimeout(function() {
         img.remove();
@@ -241,8 +289,12 @@ for (var i = 0; i < numSlices; i++) {
 for (var i = 1; i < numSlices; i += 2) {
   sliceEnds[i].turnIntoCat(false);
 }
-//sliceEnds[0].turnIntoGoldenUnicorn();
+
+sliceEnds[0].turnIntoGoldenUnicorn();
+
 
 // Event listener for clicking the spin button
 spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
+
+
