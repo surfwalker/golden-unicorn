@@ -11,7 +11,7 @@ var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unico
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
 var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
 var winnerSlice = '';
-var unicornArray = [];
+
 
 // Get the wheel disc that we are rotating
 // We start at angle 0, and every 10ms add 2 degrees
@@ -217,8 +217,27 @@ function getRightmostSlice() {
       closestDistance = distance;
     }
   }
+  if (closestSlice.isCat){
+    var unicornArray = formUnicornArray();
+    console.log(unicornArray);
+    var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
+    console.log(unicornToChange);
+    unicornToChange.turnIntoCat(true);
+    unicornArray = [];
+  }
   return closestSlice;
 }
+
+function formUnicornArray(){
+  var unicornArray = [];
+  for (var i = 0; i < numSlices; i++){
+    if (sliceEnds[i].isUnicorn){
+      unicornArray.push(sliceEnds[i]);
+    }
+  }
+  return unicornArray;
+}
+
 
 // Does a POW animation at the specified location
 function doPow(x, y) {
@@ -277,3 +296,5 @@ sliceEnds[0].turnIntoGoldenUnicorn();
 // Event listener for clicking the spin button
 spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
+
+
