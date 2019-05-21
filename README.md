@@ -28,7 +28,7 @@ Built in Visual Studio Code
 ***
 ##### Acknowledgments
 
-Sally Reid: Author of Story
+S.E. Reid: Author of Story
 
 Dustin Haynes: Character Artwork
 ***
