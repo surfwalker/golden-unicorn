@@ -12,9 +12,14 @@ var playerForm = document.getElementById('playerform');
 // Player constructor function
 function Player(name) {
   this.name = name;
-  this.points = 0;
+  this.points = [];
   allPlayers.push(this);
 }
+
+var saveToLocalStorage = function(arr) {
+  var stringifiedPlayers = JSON.stringify(allPlayers);
+  localStorage.setItem('playersStorage', stringifiedPlayers);
+};
 
 function handleNewPlayerSubmit(event) {
 
