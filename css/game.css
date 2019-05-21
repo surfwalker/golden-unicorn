@@ -45,6 +45,7 @@ body {
   display: block;
   top: 132px;
   left: 515px;
+  transition: 0.25s;
 }
 
 #arrowImage {
