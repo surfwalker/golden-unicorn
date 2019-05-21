@@ -11,7 +11,7 @@ var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unico
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
 var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
 var winnerSlice = '';
-
+var points = 0;
 
 // Get the wheel disc that we are rotating
 // We start at angle 0, and every 10ms add 2 degrees
@@ -72,6 +72,30 @@ function SliceEnd(num) {
     this.isGolden = true;
     this.isUnicorn = false;
     iconEl.setAttributeNS(svgxlink, 'href', goldenUnicornImageUrl);
+  };
+
+  this.turnIntoUnicorn = function(doAnimation) {
+    var iconId = this.id + '_icon';
+    var iconEl = document.getElementById(iconId);
+    if (!this.isUnicorn) {
+      this.isUnicorn = true;
+      this.isCat = false;
+      this.cashValue = 100;
+
+      if (doAnimation) {
+        // Do a pow animation where the image is right now
+        var iconRect = iconEl.getBoundingClientRect();
+        var wrapperRect = wrapperEl.getBoundingClientRect();
+        doPow(iconRect.left - wrapperRect.left, iconRect.top - wrapperRect.top);
+
+        // When the pow is biggest, change the image
+        setTimeout(function() {
+          iconEl.setAttributeNS(svgxlink, 'href', unicornImageUrl);
+        }, 400);
+      } else {
+        iconEl.setAttributeNS(svgxlink, 'href', unicornImageUrl);
+      }
+    }
   };
 
 
@@ -171,13 +195,6 @@ function onTimerTick() {
     winnerSlice = getRightmostSlice();
     console.log('You just won $' + winnerSlice.cashValue);
   }
-  // if (winnerSlice.isCat) {
-  //   for (var i = 0; i < numSlices; i++) {
-  //     if (sliceEnds[i].isUnicorn) {
-  //       sliceEnds[i].turnIntoCat(true);
-  //     }
-  //   }
-  // }
 }
 
 function handleSpinButton(event){
@@ -225,6 +242,20 @@ function getRightmostSlice() {
     unicornToChange.turnIntoCat(true);
     unicornArray = [];
   }
+
+  if (closestSlice.isGolden){
+    var catArray = formCatArray();
+    console.log(catArray);
+    var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
+    console.log(catToChange);
+    catToChange.turnIntoUnicorn(true);
+    catArray = [];
+    points += 500;
+  }
+
+  if (closestSlice.isUnicorn){
+    points += 100;
+  }
   return closestSlice;
 }
 
@@ -236,6 +267,16 @@ function formUnicornArray(){
     }
   }
   return unicornArray;
+}
+
+function formCatArray(){
+  var catArray = [];
+  for (var i = 0; i < numSlices; i++){
+    if (sliceEnds[i].isCat){
+      catArray.push(sliceEnds[i]);
+    }
+  }
+  return catArray;
 }
 
 
