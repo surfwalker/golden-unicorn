@@ -1,10 +1,7 @@
-'use strict'
+'use strict';
 
 // will hold all the store object instances
 var allPlayers = [];
-
-// grabbing leaderboardTable DOM element in leaderboard.html
-var leaderboardTable = document.getElementById('leaderboard-table');
 
 // grabbing playerForm DOM element in index.html
 var playerForm = document.getElementById('playerform');
@@ -17,7 +14,7 @@ function Player(name) {
 }
 
 var saveToLocalStorage = function(arr) {
-  var stringifiedPlayers = JSON.stringify(allPlayers);
+  var stringifiedPlayers = JSON.stringify(arr);
   localStorage.setItem('playersStorage', stringifiedPlayers);
 };
 
@@ -39,6 +36,7 @@ function handleNewPlayerSubmit(event) {
   console.log(playerName);
   new Player(playerName);
 
+  saveToLocalStorage(allPlayers);
   // This empties the form fields after the data has been grabbed
   event.target.playername.value = null;
 }
