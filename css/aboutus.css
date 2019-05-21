@@ -1,7 +1,14 @@
+nav{
+    width: 960px;
+	margin: 0px auto;
+    font-size: 22px;
+}
+
 button{
     color: black;
     font-size: 10px;
 }
+
 
 h1{
     font-family: Arial Black, Gadget, sans-serif;
