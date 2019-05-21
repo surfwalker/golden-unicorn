@@ -32,7 +32,7 @@ header li:last-child {
 }
 
 a {
-	color: gold;
+	color: white;
 	text-decoration: none;
 }
 
@@ -67,13 +67,13 @@ main {
 }
 
 fieldset {
-  color: gold;
+  color: white;
   font-size: 90%;
 }
 
 #submit-user-info {
 	background: black;
-	color: gold;
+	color: white;
   font-weight: bold;
 }
 

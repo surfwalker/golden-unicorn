@@ -7,7 +7,7 @@ var allPlayers = [];
 var leaderboardTable = document.getElementById('leaderboard-table');
 
 // grabbing playerForm DOM element in index.html
-var playerForm = document.getElementById('player-form');
+var playerForm = document.getElementById('playerform');
 
 // Player constructor function
 function Player(name) {
@@ -30,8 +30,8 @@ function handleNewPlayerSubmit(event) {
   var playerName = event.target.playername.value;
   console.log('Player name is: ' + playerName);
 
-	// create new Player from form input
-	console.log(playerName);
+  // create new Player from form input
+  console.log(playerName);
   new Player(playerName);
 
   // This empties the form fields after the data has been grabbed
