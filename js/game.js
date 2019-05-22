@@ -8,6 +8,11 @@ var sliceSize = 300 / numSlices;
 var markerDiv = document.getElementById('markerDiv');
 var wrapperEl = document.getElementById('wrapper');
 var spinsRemaining = document.getElementById('spins');
+var leaderboard = document.getElementById('leaderboard');
+var imageSlideInUnicorn = document.getElementById('imageSlideInUnicorn');
+var imageSlideInCat = document.getElementById('imageSlideInCat');
+var leaderboardMessage = document.getElementById('leaderboardMessage');
+var roulette = document.getElementById('roulette');
 var score = document.getElementById('score');
 var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-512.png';
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
@@ -21,7 +26,7 @@ var disc = document.getElementById('wheelDisc');
 var discAngle = 0;
 var updateMs = 10;
 var rotationSpeed = 0;
-var slowDownFactor = .992;
+var slowDownFactor = .985;
 
 // Button for event listener
 var spinButton = document.getElementById('spinButton');
@@ -203,13 +208,9 @@ function handleSpinButton(event){
 // Set the timer that will update every X ms
   // event.preventDefault();
   spinButton.disabled = true;
-  spins--;  
+  spins--;
   renderScoreSpins();
-  if (spins > 0) {
-    rotationSpeed = getRandomIntInclusive(50, 150);
-  } else {
-    rotationSpeed = 0;
-  }
+  rotationSpeed = getRandomIntInclusive(50, 150);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -244,9 +245,11 @@ function getRightmostSlice() {
 function sliceLandedOn(closestSlice){
   if (closestSlice.isCat){
     var unicornArray = formUnicornArray();
-    var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
-    unicornToChange.turnIntoCat(true);
-    unicornArray = [];
+    if (unicornArray.length > 0) {
+      var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
+      unicornToChange.turnIntoCat(true);
+      unicornArray = [];
+    }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
@@ -254,12 +257,13 @@ function sliceLandedOn(closestSlice){
     catArray = [];
     points += 500;
   } else if (closestSlice.isUnicorn){
-    points += 100;
+    points += 250;
   }
   if (spins > 0){
     spinButton.disabled = false;
   } else {
     spinButton.disabled = true;
+    // INSERT LEADERBOARD DROP DOWN IF's
   }
   renderScoreSpins();
 }
@@ -337,6 +341,11 @@ function updateScoreOnHeart() {
   if (heartProgress.ldBar != null) {
     heartProgress.ldBar.set(percent);
   }
+
+  if (percent === 100) {
+    spinButton.disabled = true;
+    bringDownLeaderboardUnicorn();
+  }
 }
 
 function renderScoreSpins(){
@@ -344,6 +353,21 @@ function renderScoreSpins(){
   spinsRemaining.innerHTML = 'Spins Remaining: ' + spins;
   updateScoreOnHeart();
 }
+
+function bringDownLeaderboardUnicorn(){
+  leaderboard.style.top = '95px';
+  leaderboardMessage.innerHTML = 'You have defeated the evil laser kitteh!!!';
+  imageSlideInUnicorn.style.top = '285px';
+  roulette.style.opacity = '0.4';
+}
+
+function bringDownLeaderboardCat(){
+  leaderboard.style.top = '95px';
+  leaderboardMessage.innerHTML = 'The evil laser kitteh has prevailed!';
+  imageSlideInCat.style.top = '285px';
+  roulette.style.opacity = '0.4';
+}
+
 
 // Create the slices
 for (var i = 0; i < numSlices; i++) {
