@@ -3,7 +3,29 @@
 }
 
 body {
-  background: url('../img/astronomy-dark.jpg')
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/astronomy-dark.jpg');
+  background-size: 80em;
+}
+
+#scoreAndSpins {
+  width: 200px;
+  height: 100px;
+  border: 3px solid white;
+  border-radius: 15px;
+  color: white;
+  position: absolute;
+  margin-left: 30px;
+  text-align: center;
+}
+
+#spins {
+  width: 150px;
+  height: 40px;
+}
+
+#score {
+  width: 150px;
+  height: 40px;
 }
 
 #roulette {

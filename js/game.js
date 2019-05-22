@@ -7,6 +7,8 @@ var slicesContainer = document.getElementById('slicesContainer');
 var sliceSize = 300 / numSlices;
 var markerRect = document.getElementById('markerDiv').getBoundingClientRect();
 var wrapperEl = document.getElementById('wrapper');
+var spinsRemaining = document.getElementById('spins');
+var score = document.getElementById('score');
 var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-512.png';
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
 var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
@@ -200,7 +202,8 @@ function onTimerTick() {
 function handleSpinButton(event){
 // Set the timer that will update every X ms
   // event.preventDefault();
-  spins--;
+  spins--;  
+  renderScoreSpins();
   if (spins > 0) {
     rotationSpeed = getRandomIntInclusive(50, 150);
   } else {
@@ -256,6 +259,7 @@ function getRightmostSlice() {
   if (closestSlice.isUnicorn){
     points += 100;
   }
+  renderScoreSpins();
   return closestSlice;
 }
 
@@ -322,6 +326,11 @@ function doPow(x, y) {
   }, 200);
 }
 
+function renderScoreSpins(){
+  spinsRemaining.innerHTML = 'Spins Remaining: ' + spins;
+  score.innterHTML = 'Total Score: ' + points;
+}
+
 // Create the slices
 for (var i = 0; i < numSlices; i++) {
   sliceEnds[i] = new SliceEnd(i);
@@ -337,5 +346,7 @@ sliceEnds[0].turnIntoGoldenUnicorn();
 // Event listener for clicking the spin button
 spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
+
+renderScoreSpins();
 
 
