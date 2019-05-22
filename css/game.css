@@ -50,11 +50,57 @@ body {
   background-size: 80em;
 }
 
+#imageSlideInUnicorn {
+  height: 175px;
+  width: 175px;
+  z-index: +1;
+  position: absolute;
+  margin-left: 250px;
+  top: -1000px;
+  transition: 1800ms;
+}
+
+#imageSlideInCat {
+  height: 175px;
+  width: 175px;
+  z-index: +1;
+  position: absolute;
+  margin-left: 250px;
+  top: -1000px;
+  transition: 1800ms;
+}
+
+#leaderboard {
+  height: 300px;
+  width: 300px;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 180px;
+  z-index: +1;
+  position: absolute;
+  margin-left: 98px;
+  top: -1000px;
+  transition: 1000ms;
+}
+
+#leaderboardMessage {
+  text-align: center;
+  color: white;
+  font-family: monospace;
+  font-size: 18px;
+  margin-top: 100px;
+}
+
+#goToLeaderboard {
+  position: absolute;
+  margin-left: 105px;
+}
+
 #scoreAndSpins {
   width: 225px;
   height: 100px;
   border: 3px solid white;
-  border-radius: 15px;
+  border-radius: 80px;
   color: white;
   position: absolute;
   margin-left: 30px;
