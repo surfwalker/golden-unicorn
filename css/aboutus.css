@@ -1,10 +1,11 @@
-
+* {
+    font-family: Arial, sans-serif;
+    /* font-weight: bold; */
+  }
 
 nav {
-	width: 900px;
-    font-size: 25px;
-    /* display: inline; */
-
+    font-size: 30px; 
+    display: inline; 
 }
   
 header li{
@@ -16,7 +17,7 @@ header li{
 /* header li:first-child{
     /* margin-left: 30px; */
     /* display: inline; */
-/* } */ */
+/* } */ 
 
 
 header li:last-child{
@@ -26,8 +27,6 @@ header li:last-child{
 
 button{
     color: black;
-    font-size: 12px;
-    padding: 10px;
     box-shadow: inset 0 0 10px #f818c0;
 }
 
@@ -35,30 +34,23 @@ a{
     color:whitesmoke;
     text-decoration: none;
     border-radius: 80px;
-    border-style: solid;
-    font-weight: bold;
-    border-color: rgb(10, 10, 10);
-    border-width: 2px;
-    background-color:#363636;
-    padding: 10px;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 a:hover{
-	box-shadow: inset 0 0 12px #f818c0;
+    box-shadow: inset 0 0 12px #f818c0;
+    padding: 15px;
 }
 
 h1{
-    font-family: Arial Black, Gadget, sans-serif;
     color: whitesmoke;  
     font-size: 40px;
     text-shadow: 3px 3px 10px #f818c0;
-    /* text-align: center; */
 }
 
 body{
-    background:url('../img/astronomy-dark.jpg');
-    background-size: 120em;
+    background: url('../img/astronomy-dark.jpg');
+    background-size: 80em;
     background-repeat: no-repeat;
 
 }
@@ -86,8 +78,8 @@ body{
 }
 
 .text-alex{
-    font-family: Arial Black, Gadget, sans-serif;
     text-align: center;
+    font-weight: 600;
 }
 
 #sarah-box{
@@ -101,8 +93,8 @@ body{
 }
 
 .text-sarah{
-    font-family: Arial Black, Gadget, sans-serif;
     text-align: center;
+    font-weight: 600;
 }
 
 #sara-box{
@@ -116,7 +108,7 @@ body{
 }
 
 .text-sara{
-    font-family: Arial Black, Gadget, sans-serif;
     text-align: center;
+    font-weight: 600;
 }
 
