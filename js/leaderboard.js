@@ -13,11 +13,19 @@ function Player(name, points) {
   this.points = points;
 }
 
+// Player method for totalling all points
+Player.prototype.totalAllPoints = function() {
+	var totalPoints = 0;
+	for (var i = 0; i < this.points.length; i++) {
+		totalPoints = totalPoints + this.points[i];
+	}
+	return totalPoints;
+}
+
 function loadFromLocalStorage(dataArray, length) {
-  console.log(length);
-  console.log(dataArray);
   for (var i = 0; i < length; i++) {
-    dataArray.push(new Player(dataArray[i].name, dataArray[i].points));
+		dataArray.push(new Player(dataArray[i].name, dataArray[i].points));
+		console.table(dataArray);
   }
 
   // iteration through array and remove first half
@@ -52,35 +60,35 @@ function makeHeaderRow() {
   leaderboardTable.appendChild(trEl);
 }
 
-var renderLeaderboard = function(array) {
+function renderLeaderboard(array) {
 
   makeHeaderRow();
 
-  // make a tr
-  var trEl = document.createElement('tr');
-	console.log(array.length);
   for (var i = 0; i < array.length; i++) {
+		// make a tr
+		var trEl = document.createElement('tr');
 
     // create, content, append for player's name
     var tdEl = document.createElement('td');
     tdEl.textContent = array[i].name;
     trEl.appendChild(tdEl);
 
-		for(var j = 0; j < array[i].points.length; j++) {
-
-    // create, content, append for each hourly total
-    tdEl = document.createElement('td');
-    tdEl.textContent = array[i].points[j];
-		trEl.appendChild(tdEl);
+		// create, content, append points for each spin
+		for (var j = 0; j < array[i].points.length; j++) {
+			tdEl = document.createElement('td');
+			tdEl.textContent = array[i].points[j];
+			trEl.appendChild(tdEl);
 		}
-  }
-  // // create, content, append for daily total
-  // tdEl = document.createElement('td');
-  // tdEl.textContent = this.totalCookiesPerDay(this.recordOfSalesPerHour);
-  // trEl.appendChild(tdEl);
+
+		// create, content, append for daily total
+		tdEl = document.createElement('td');
+		tdEl.textContent = array[i].totalAllPoints();
+		trEl.appendChild(tdEl);
+
   // append the tr to the table
-  leaderboardTable.appendChild(trEl);
-};
+	leaderboardTable.appendChild(trEl);
+	}
+}
 
 loadFromLocalStorage(allPlayersData, arrayLength);
 renderLeaderboard(allPlayersData);
