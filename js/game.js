@@ -19,6 +19,7 @@ var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/m
 var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
 var points = 0;
 var heartProgress = document.getElementById('heartProgress');
+var renderedScoreYet = false;
 
 // Get the wheel disc that we are rotating
 // We start at angle 0, and every 10ms add 2 degrees
@@ -202,6 +203,11 @@ function onTimerTick() {
     var winnerSlice = getRightmostSlice();
     sliceLandedOn(winnerSlice);
   }
+
+  if (!renderedScoreYet && heartProgress.ldBar !== null){
+    renderScoreSpins();
+    renderedScoreYet = true;
+  }
 }
 
 function handleSpinButton(event){
@@ -249,6 +255,7 @@ function sliceLandedOn(closestSlice){
       var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
       unicornToChange.turnIntoCat(true);
       unicornArray = [];
+      points -=100;
     }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
@@ -257,13 +264,18 @@ function sliceLandedOn(closestSlice){
     catArray = [];
     points += 500;
   } else if (closestSlice.isUnicorn){
-    points += 250;
+    var catArray = formCatArray();
+    var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
+    catToChange.turnIntoUnicorn(true);
+    catArray = [];
+    points += 100;
   }
   if (spins > 0){
     spinButton.disabled = false;
   } else {
     spinButton.disabled = true;
     // INSERT LEADERBOARD DROP DOWN IF's
+    bringDownLeaderboardCat();
   }
   renderScoreSpins();
 }
@@ -333,7 +345,7 @@ function doPow(x, y) {
 
 function updateScoreOnHeart() {
   var maxScore = 1000;
-  var percent = points * 100 / maxScore;
+  var percent = (points + 500) * 100 / maxScore;
   if (percent > 100) {
     percent = 100;
   }
@@ -385,4 +397,9 @@ sliceEnds[0].turnIntoGoldenUnicorn();
 spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
 
+window.addEventListener('DOMContentLoaded', (event) => {
+  renderScoreSpins();
+});
+
 renderScoreSpins();
+

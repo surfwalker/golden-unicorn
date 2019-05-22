@@ -21,7 +21,7 @@ body {
   position: absolute;
   margin-left: 250px;
   top: -1000px;
-  transition: 1800ms;
+  transition: 2800ms;
 }
 
 #imageSlideInCat {
@@ -31,7 +31,7 @@ body {
   position: absolute;
   margin-left: 250px;
   top: -1000px;
-  transition: 1800ms;
+  transition: 2800ms;
 }
 
 #leaderboard {
@@ -44,7 +44,7 @@ body {
   position: absolute;
   margin-left: 98px;
   top: -1000px;
-  transition: 1000ms;
+  transition: 2000ms;
 }
 
 #leaderboardMessage {
