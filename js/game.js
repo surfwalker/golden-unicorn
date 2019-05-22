@@ -259,7 +259,7 @@ function getRightmostSlice() {
   if (closestSlice.isUnicorn){
     points += 100;
   }
-  renderScoreSpins();
+  
   return closestSlice;
 }
 
@@ -327,8 +327,8 @@ function doPow(x, y) {
 }
 
 function renderScoreSpins(){
+  score.innerHTML = 'Total Score: ' + points;
   spinsRemaining.innerHTML = 'Spins Remaining: ' + spins;
-  score.innterHTML = 'Total Score: ' + points;
 }
 
 // Create the slices
