@@ -358,6 +358,11 @@ function updateScoreOnHeart() {
     spinButton.disabled = true;
     bringDownLeaderboardUnicorn();
   }
+
+  if (percent === 0) {
+    spinButton.disabled = true;
+    bringDownLeaderboardCat();
+  }
 }
 
 function renderScoreSpins(){
@@ -369,14 +374,14 @@ function renderScoreSpins(){
 function bringDownLeaderboardUnicorn(){
   leaderboard.style.top = '95px';
   leaderboardMessage.innerHTML = 'You have defeated the evil laser kitteh!!!';
-  imageSlideInUnicorn.style.top = '285px';
+  imageSlideInUnicorn.style.top = '295px';
   roulette.style.opacity = '0.4';
 }
 
 function bringDownLeaderboardCat(){
   leaderboard.style.top = '95px';
   leaderboardMessage.innerHTML = 'The evil laser kitteh has prevailed!';
-  imageSlideInCat.style.top = '285px';
+  imageSlideInCat.style.top = '295px';
   roulette.style.opacity = '0.4';
 }
 
@@ -396,10 +401,6 @@ sliceEnds[0].turnIntoGoldenUnicorn();
 // Event listener for clicking the spin button
 spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
-
-window.addEventListener('DOMContentLoaded', (event) => {
-  renderScoreSpins();
-});
 
 renderScoreSpins();
 
