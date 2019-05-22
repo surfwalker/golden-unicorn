@@ -5,15 +5,15 @@ var numSlices = 12; // How many slices do we want
 var spins = 7;
 var slicesContainer = document.getElementById('slicesContainer');
 var sliceSize = 300 / numSlices;
-var markerRect = document.getElementById('markerDiv').getBoundingClientRect();
+var markerDiv = document.getElementById('markerDiv');
 var wrapperEl = document.getElementById('wrapper');
 var spinsRemaining = document.getElementById('spins');
 var score = document.getElementById('score');
 var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-512.png';
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
 var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
-var winnerSlice = '';
 var points = 0;
+var heartProgress = document.getElementById('heartProgress');
 
 // Get the wheel disc that we are rotating
 // We start at angle 0, and every 10ms add 2 degrees
@@ -194,14 +194,15 @@ function onTimerTick() {
 
   if (rotationSpeed > 0 && rotationSpeed < 0.01) {
     rotationSpeed = 0;
-    winnerSlice = getRightmostSlice();
-    console.log('You just won $' + winnerSlice.cashValue);
+    var winnerSlice = getRightmostSlice();
+    sliceLandedOn(winnerSlice);
   }
 }
 
 function handleSpinButton(event){
 // Set the timer that will update every X ms
   // event.preventDefault();
+  spinButton.disabled = true;
   spins--;  
   renderScoreSpins();
   if (spins > 0) {
@@ -220,7 +221,7 @@ function getRandomIntInclusive(min, max) {
 function getRightmostSlice() {
   var closestSlice = null;
   var closestDistance = 999999;
-
+  var markerRect = markerDiv.getBoundingClientRect();
   for (var i = 0; i < numSlices; i++) {
     // Get the x,y of the reference point of the next shape
     var rect = sliceEnds[i].referencePoint.getClientRects()[0];
@@ -237,30 +238,30 @@ function getRightmostSlice() {
       closestDistance = distance;
     }
   }
+  return closestSlice;
+}
+
+function sliceLandedOn(closestSlice){
   if (closestSlice.isCat){
     var unicornArray = formUnicornArray();
-    console.log(unicornArray);
     var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
-    console.log(unicornToChange);
     unicornToChange.turnIntoCat(true);
     unicornArray = [];
-  }
-
-  if (closestSlice.isGolden){
+  } else if (closestSlice.isGolden){
     var catArray = formCatArray();
-    console.log(catArray);
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
-    console.log(catToChange);
     catToChange.turnIntoUnicorn(true);
     catArray = [];
     points += 500;
-  }
-
-  if (closestSlice.isUnicorn){
+  } else if (closestSlice.isUnicorn){
     points += 100;
   }
-  
-  return closestSlice;
+  if (spins > 0){
+    spinButton.disabled = false;
+  } else {
+    spinButton.disabled = true;
+  }
+  renderScoreSpins();
 }
 
 function formUnicornArray(){
@@ -326,9 +327,22 @@ function doPow(x, y) {
   }, 200);
 }
 
+function updateScoreOnHeart() {
+  var maxScore = 1000;
+  var percent = points * 100 / maxScore;
+  if (percent > 100) {
+    percent = 100;
+  }
+
+  if (heartProgress.ldBar != null) {
+    heartProgress.ldBar.set(percent);
+  }
+}
+
 function renderScoreSpins(){
   score.innerHTML = 'Total Score: ' + points;
   spinsRemaining.innerHTML = 'Spins Remaining: ' + spins;
+  updateScoreOnHeart();
 }
 
 // Create the slices
@@ -348,5 +362,3 @@ spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
 
 renderScoreSpins();
-
-
