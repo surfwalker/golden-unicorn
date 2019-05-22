@@ -25,7 +25,7 @@ header li {
 }
 
 header li:first-child{
-	margin-left: 110px;
+	margin-left: 90px;
 }
 
 header li:last-child {
@@ -38,33 +38,41 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;
+  border-radius: 80px;
+  box-shadow: inset 0 0 10px #f818c0;
+  padding: 5px;
 }
 
-main {
+/* main {
 	width: 960px;
 	margin: 30px auto;
-}
+} */
 
 #laser-kitteh {
 	float: right;
 	margin-top: 20px;
-  margin-right: 10px;
+  margin-right: auto;
+  margin-left: auto;
   height: 250px;
   width: 250px;
 }
 #golden-unicorn{
   height: 250px;
   width: 250px;
-  margin-bottom: 10px;
+  /* margin-bottom: 200px; */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
 }
 
 
 #banner {
-	display: block; 
-	/* margin-top: 250px; */
-	margin-left: auto; 
-  margin-right: auto;
+  /* display: block;  */
+  width: 700px;
+  height: 100px;
+	margin-top: 50px;
+	margin-left: 200px; 
+  padding: 30px;
 }
 
 #player-info {
@@ -76,33 +84,52 @@ main {
   border: #fff;
   border-style: groove;
   border-width: 2px;
-  padding: 8px;
+  padding: 5px;
 }
 
+#legend {
+  background-color: rgba(148, 0, 211); opacity: 0.9;
+  height: 80px;
+  width: 350px;
+  text-align: center;
+  padding:  5px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 80px;
+  box-shadow: inset 0 0 9px #f818c0;
+}
+/* 
 fieldset {
   color:whitesmoke;
   font-size: 90%;
   background-color: aqua;
-}
+  text-align: center;
+  padding: 20px;
+  width: 350px;
+} */
 
 #submit-user-info {
 	background: black;
 	color: white;
   font-weight: bold;
+  text-align: center;
 
 }
 
 button {
 	padding: 10px 30px;
 	background: #000;
-	color: #fff;
-	border-radius: 2px;
-	font-size: 18px;
-	transition: 350ms;
+	color: whitesmoke;
+	border-radius: 80px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 350ms;
+  box-shadow: inset 0 0 10px #f818c0;
+ 
 }
 
 button:hover {
-background: gray;
+background: rgb(117, 115, 117);
 }
 
 body {
@@ -111,10 +138,11 @@ body {
 } 
 
 
-/* FOOTER */
+/* FOOTER 
 
 footer {
-	height: 100px;
+  display: block;
+	height: 500px;
 	background: black;
-}
+} */
 

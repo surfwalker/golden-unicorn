@@ -1,0 +1,21 @@
+#banner {
+    width: 700px;
+    height: 100px;
+    margin-top: 5px;
+    margin-left: 240px; 
+    padding: 20px;
+  }
+
+  #golden{
+      width: 250px;
+      height: 250px;
+      padding: 5px;
+      float: right;
+      margin-right: 25px;
+  }
+
+  body {
+    background: url('../img/astronomy-dark.jpg');
+    /* background-repeat: no-repeat; */
+  } 
+  

@@ -1,20 +1,59 @@
-nav{
-    width: 960px;
-	margin: 0px auto;
-    font-size: 22px;
+
+
+nav {
+	width: 900px;
+    font-size: 25px;
+    /* display: inline; */
+
+}
+  
+header li{
+	display: inline;
+    margin-right: 80px; 
+    
+}
+
+/* header li:first-child{
+    /* margin-left: 30px; */
+    /* display: inline; */
+} */
+
+
+header li:last-child{
+    display: inline;
+	margin-right: 0px;
 }
 
 button{
     color: black;
-    font-size: 10px;
+    font-size: 12px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px #f818c0;
 }
 
+a{
+    color:whitesmoke;
+    text-decoration: none;
+    border-radius: 80px;
+    border-style: solid;
+    font-weight: bold;
+    border-color: rgb(10, 10, 10);
+    border-width: 2px;
+    background-color:#363636;
+    padding: 10px;
+    font-size: 15px;
+}
+
+a:hover{
+	box-shadow: inset 0 0 12px #f818c0;
+}
 
 h1{
     font-family: Arial Black, Gadget, sans-serif;
     color: whitesmoke;  
-    font-size: 50px;
-    text-align: center;
+    font-size: 40px;
+    text-shadow: 3px 3px 10px #f818c0;
+    /* text-align: center; */
 }
 
 body{
@@ -26,14 +65,14 @@ body{
 
 .total-body{
     background-color: black;
-    border: 2px;
+    border: 1px;
     border-color: black;
     border-style: solid;
     width: 800px;
     height: 420px;
     padding: 10px;
-   /* position: relative; */
-   /* margin-left: 200px;   */
+    box-shadow: inset 0 0 8px #f818c0;
+   
 }
 
 #alex-box{
@@ -80,5 +119,4 @@ body{
     font-family: Arial Black, Gadget, sans-serif;
     text-align: center;
 }
-
 
