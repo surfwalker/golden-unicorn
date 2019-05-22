@@ -8,7 +8,6 @@ body {
 
 header {
 	height: 100px;
-	background:black;
 }
 
 nav {
@@ -40,7 +39,7 @@ a {
 a:hover {
   border-radius: 80px;
   box-shadow: inset 0 0 10px #f818c0;
-  padding: 5px;
+  padding: 8px;
 }
 
 /* main {
@@ -67,7 +66,6 @@ a:hover {
 
 
 #banner {
-  /* display: block;  */
   width: 700px;
   height: 100px;
 	margin-top: 50px;
@@ -80,10 +78,12 @@ a:hover {
 	margin-right: auto;
 	width: 300px;
 	margin-top: 50px;
-  background-color: black;
-  border: #fff;
-  border-style: groove;
-  border-width: 2px;
+  background-color:black;
+  border:whitesmoke;
+  border-radius: 80px;
+  box-shadow: inset 0 0 10px #f818c0;
+  padding: 10px;
+  border-width: 1px;
   padding: 5px;
 }
 
@@ -96,7 +96,7 @@ a:hover {
   font-size: 20px;
   font-weight: bold;
   border-radius: 80px;
-  box-shadow: inset 0 0 9px #f818c0;
+  box-shadow: inset 0 0 10px #f818c0;
 }
 /* 
 fieldset {
@@ -110,7 +110,7 @@ fieldset {
 
 #submit-user-info {
 	background: black;
-	color: white;
+	color: whitesmoke;
   font-weight: bold;
   text-align: center;
 
@@ -120,12 +120,11 @@ button {
 	padding: 10px 30px;
 	background: #000;
 	color: whitesmoke;
-	border-radius: 80px;
   font-size: 18px;
   font-weight: bold;
   transition: 350ms;
+  border-radius: 80px;
   box-shadow: inset 0 0 10px #f818c0;
- 
 }
 
 button:hover {
