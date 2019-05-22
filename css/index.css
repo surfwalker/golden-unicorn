@@ -1,4 +1,7 @@
 /* ENTIRE PAGE */
+* {
+  font-family: Arial, sans-serif;
+}
 
 body {
     font-family: helvetica, sans-serif;
@@ -20,7 +23,7 @@ nav {
 header li {
 	display: inline-block;
 	margin-right: 120px;
-	margin-top: 40px;
+	margin-top: 30px;
 }
 
 header li:first-child{
@@ -68,12 +71,11 @@ a:hover {
 #banner {
   width: 700px;
   height: 100px;
-	margin-top: 50px;
 	margin-left: 200px; 
   padding: 30px;
 }
 
-#player-info {
+/* #player-info {
 	margin-left: auto; 
 	margin-right: auto;
 	width: 300px;
@@ -85,7 +87,7 @@ a:hover {
   padding: 10px;
   border-width: 1px;
   padding: 5px;
-}
+} */
 
 #legend {
   background-color: rgba(148, 0, 211); opacity: 0.9;
@@ -133,6 +135,7 @@ background: rgb(117, 115, 117);
 
 body {
   background: url('../img/astronomy-dark.jpg');
+  background-size: 80em;
   /* background-repeat: no-repeat; */
 } 
 

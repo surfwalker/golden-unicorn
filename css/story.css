@@ -1,30 +1,33 @@
+* {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
 header{
 display: inline-block;
 border-color: whitesmoke;
 text-align: center;
 height: 100px;
 width: 700px;
-font-weight: bold;
-margin-left: 120px;
+margin-left: 80px;
 margin-top: 20px;
 padding: 15px; 
 }
 
 nav {
-	/* width: 700px; */
     font-size: 40px;
     display: inline;
+
 
 }
   
 header li{
 	display: inline;
-    margin-right: 80px; 
+    margin-right: 5px; 
     
 }
 
 header li:first-child{
-    margin-left: 30px;
+    margin-left: 5px;
     display: inline; 
 }  
 
@@ -37,15 +40,17 @@ header li:last-child{
 h1{
 display: inline-block;
 color: whitesmoke;
-font-size: 40px;
+font-size: 45px;
 text-align: center;
 padding: 25px; 
 text-shadow: 3px 3px 10px #f818c0;
 margin-top: 15px;
+padding: 20px;
 }
 
 body {
 background: url('../img/astronomy-dark.jpg');
+border-radius: 80em;
     /* background-repeat: no-repeat; */
 }
 
@@ -61,24 +66,19 @@ float: left;
 margin-top: 20px;
 height: 200px;
 width: 200px;
-
 }
 
 a{
 color:whitesmoke;
 text-decoration: none;
 border-radius: 80px;
-border-style: solid;
-font-weight: bold;
-border-color: rgb(10, 10, 10);
-border-width: 2px;
-background-color:#363636;
-padding: 10px;
-font-size: 15px;
+padding: 5px;
+font-size: 25px;
 }
 
 a:hover{
 box-shadow: inset 0 0 12px #f818c0;
+padding: 12px;
 }
 
 .fade {
