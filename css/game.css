@@ -61,7 +61,7 @@ body {
 }
 
 #scoreAndSpins {
-  width: 225px;
+  width: 235px;
   height: 100px;
   border: 3px solid white;
   border-radius: 80px;
@@ -70,22 +70,25 @@ body {
   margin-left: 30px;
   text-align: center;
   font-size: 18px;
+  font-family: monospace;
 }
 
 #spins {
   margin-left: 25px;
   margin-top: 25px;
-  width: 175px;
+  width: 185px;
   height: 25px;
   text-align: center;
+  font-family: monospace;
 }
 
 #score {
   margin-left: 25px;
   margin-bottom: 25px;
-  width: 175px;
+  width: 185px;
   height: 25px;
   text-align: center;
+  font-family: monospace;
 }
 
 #roulette {
