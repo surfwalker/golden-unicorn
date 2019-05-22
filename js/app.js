@@ -41,26 +41,4 @@ function handleNewPlayerSubmit(event) {
   event.target.playername.value = null;
 }
 
-// Shop.prototype.render = function() {
-// 	// make a tr
-// 	var trEl = document.createElement('tr');
-// 	// create, content, append for "Shop Location"
-// 	var tdEl = document.createElement('td');
-// 	tdEl.textContent = this.location;
-// 	trEl.appendChild(tdEl);
-// 	// create, content, append for each hourly total
-// 	for (var i = 0; i < hoursOfOperation.length; i++) {
-// 		tdEl = document.createElement('td');
-// 		tdEl.textContent = this.recordOfSalesPerHour[i];
-// 		trEl.appendChild(tdEl);
-// 	}
-// 	// create, content, append for daily total
-// 	tdEl = document.createElement('td');
-// 	tdEl.textContent = this.totalCookiesPerDay(this.recordOfSalesPerHour);
-// 	trEl.appendChild(tdEl);
-// 	// append the tr to the table
-// 	salesTable.appendChild(trEl);
-// };
-
-// event listener for playerForm
 playerForm.addEventListener('submit', handleNewPlayerSubmit);
