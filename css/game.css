@@ -1,6 +1,13 @@
 * {
   font-family: Arial, sans-serif;
 }
+#banner {
+  /* display: block;  */
+  width: 650px;
+  height: 100px;
+	margin-top: 0px;
+  margin-left: 320px;
+}
 
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/astronomy-dark.jpg');
@@ -46,7 +53,7 @@ body {
   width: 500px;
   height: 500px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 #centerCircle {
