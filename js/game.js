@@ -255,7 +255,7 @@ function sliceLandedOn(closestSlice){
       var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
       unicornToChange.turnIntoCat(true);
       unicornArray = [];
-      points -=100;
+      points -=200;
     }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
@@ -268,7 +268,7 @@ function sliceLandedOn(closestSlice){
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
     catToChange.turnIntoUnicorn(true);
     catArray = [];
-    points += 100;
+    points += 200;
   }
   if (spins > 0){
     spinButton.disabled = false;
