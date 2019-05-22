@@ -3,29 +3,14 @@
 // grabbing leaderboardTable DOM element in leaderboard.html
 var leaderboardTable = document.getElementById('leaderboard-table');
 
-var allPlayersData = JSON.parse(localStorage.getItem('playersStorage')) || [];
+var allPlayers = [];
+allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
-var arrayLength = allPlayersData.length;
-
-// Player constructor function
-function Player(name, points) {
-  this.name = name;
-  this.points = points;
-}
-
-// Player method for totalling all points
-Player.prototype.totalAllPoints = function() {
-	var totalPoints = 0;
-	for (var i = 0; i < this.points.length; i++) {
-		totalPoints = totalPoints + this.points[i];
-	}
-	return totalPoints;
-}
+var arrayLength = allPlayers.length;
 
 function loadFromLocalStorage(dataArray, length) {
   for (var i = 0; i < length; i++) {
-		dataArray.push(new Player(dataArray[i].name, dataArray[i].points));
-		console.table(dataArray);
+    new Player(dataArray[i].name);
   }
 
   // iteration through array and remove first half
@@ -47,7 +32,7 @@ function makeHeaderRow() {
   // create, content, append all spin attempts
   for (var i = 1; i <= 7; i++) {
     thEl = document.createElement('th');
-    thEl.textContent = "Spin " + i;
+    thEl.textContent = 'Spin ' + i;
     trEl.appendChild(thEl);
   }
 
@@ -90,5 +75,5 @@ function renderLeaderboard(array) {
 	}
 }
 
-loadFromLocalStorage(allPlayersData, arrayLength);
-renderLeaderboard(allPlayersData);
+loadFromLocalStorage(allPlayers, arrayLength);
+renderLeaderboard(allPlayers);
