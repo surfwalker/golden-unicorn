@@ -27,6 +27,7 @@ header li {
   margin: 0px auto;
   margin-top: 30px;
   text-align: center;
+  margin-top: 20px;
 }
 
 header li:first-child{
@@ -54,8 +55,8 @@ a:hover {
   padding: 20px;
 }
 .avatarImage {
-  width: 375px;
-  height: 375px;
+  width: 275px;
+  height: 275px;
 }
 
 .avatarBar {
@@ -70,11 +71,12 @@ a:hover {
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  width: 375px;
-  height: 375px;
+  width: 275px;
+  height: 275px;
   perspective: 500px; /* Remove this if you don't want the 3D effect */
   display:inline-block;
-  margin-right: 50px;
+  margin-right: 100px;
+  margin-right: 100px;
 }
 
 /* This container is needed to position the front and back side */
@@ -114,22 +116,20 @@ a:hover {
   border-radius: 250px;
   transform: rotateY(180deg);
   text-align: center;
-  padding: 20px;
+  padding: 50px;
 }
 
 .flip-card-back-text {
   border-radius: 250px;
   vertical-align: middle;
-  width: 325px;
-  height: 325px;
+  width: 275px;
+  height: 275px;
   margin: 0 auto;
-  font-size: 14px;
-  margin-top: 75px;
+  font-size: 13px;
+  margin-top: 40px;
   font-family: monospace;
-  font-weight: bold;
   text-align: justify;
   vertical-align: middle;
-
 }
 
 body {
