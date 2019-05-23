@@ -262,7 +262,7 @@ function sliceLandedOn(closestSlice){
       unicornToChange.turnIntoCat(true);
       unicornArray = [];
       points -=200;
-      allPlayers[allPlayers.length - 1].pointsArray.push(-250);
+      allPlayers[allPlayers.length - 1].pointsArray.push(-200);
     }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
@@ -389,6 +389,7 @@ function bringDownLeaderboardUnicorn(){
   leaderboardMessage.innerHTML = 'You have defeated the evil laser kitteh!!!';
   imageSlideInUnicorn.style.top = '295px';
   roulette.style.opacity = '0.4';
+  saveToLocalStorage(allPlayers);
 }
 
 function bringDownLeaderboardCat(){
@@ -396,6 +397,7 @@ function bringDownLeaderboardCat(){
   leaderboardMessage.innerHTML = 'The evil laser kitteh has prevailed!';
   imageSlideInCat.style.top = '295px';
   roulette.style.opacity = '0.4';
+  saveToLocalStorage(allPlayers);
 }
 
 

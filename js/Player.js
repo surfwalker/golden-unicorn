@@ -27,7 +27,7 @@ function saveToLocalStorage(arr) {
 
 function loadFromLocalStorage(dataArray, length) {
   for (var i = 0; i < length; i++) {
-    new Player(dataArray[i].name);
+    new Player(dataArray[i].name, dataArray[i].pointsArray);
   }
 
   // iteration through array and remove first half
