@@ -61,63 +61,83 @@ body{
     background-size: 80em;
 }
 
-.total-body{
-    background-color: black;
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    width: 800px;
-    height: 550px;
-    padding: 10px;
-    box-shadow: inset 0 0 8px #f818c0;
-    margin: 0 auto;
+/* Flipping avatars */
+/* *********** The flip CSS code is from: https://www.w3schools.com/howto/howto_css_flip_card.asp ************/
+
+.avatarImage {
+    width: 290px;
+    height: 290px;
+    border-radius: 145px;
+  }
+  
+  .avatarBar {
+    width: 1200px;
+    height: 300px;
+    margin: 0px auto;
+    display: block;
+    margin-top: 100px;
+    text-align: center;
+  }
+  
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+  .flip-card {
+    background-color: transparent;
+    width: 275px;
+    height: 275px;
+    perspective: 500px; /* Remove this if you don't want the 3D effect */
+    display:inline-block;
+    margin-right: 100px;
+    margin-right: 100px;
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
     position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    display: inline-block;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 250px;
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .flip-card-back-text {
+    border-radius: 250px;
+    vertical-align: middle;
+    width: 225px;
+    height: 225px;
+    margin: 0 auto;
+    font-size: 13px;
+    margin-top: 20px;
     font-family: monospace;
-   
-}
-
-#alex-box{
-    background-color: whitesmoke;
-    height: 550px;
-    width: 260px;
-    border:black;
-    border-style: solid;
-    border-width: 2px;
-    float: left; 
-}
-
-.text-alex{
-    text-align: center;
-    font-weight: 600;
-}
-
-#sarah-box{
-    background-color: whitesmoke;
-    height: 550px;
-    width: 260px;
-    border:black;
-    border-style: solid;
-    border-width: 2px;
-    float:left;
-}
-
-.text-sarah{
-    text-align: center;
-    font-weight: 600;
-}
-
-#sara-box{
-    background-color:whitesmoke;
-    height: 550px;
-    width: 260px;
-    border:black;
-    border-style: solid;
-    border-width: 2px;
-    float: left; 
-}
-
-.text-sara{
-    text-align: center;
-    font-weight: 600;
-}
-
+    text-align: justify;
+  }

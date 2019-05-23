@@ -57,12 +57,12 @@ a:hover {
 /* *********** The flip CSS code is from: https://www.w3schools.com/howto/howto_css_flip_card.asp ************/
 
 .avatarImage {
-  width: 275px;
-  height: 275px;
+  width: 325px;
+  height: 325px;
 }
 
 .avatarBar {
-  width: 1800px;
+  width: 1200px;
   height: 550px;
   margin: 0px auto;
   display: block;
@@ -73,12 +73,12 @@ a:hover {
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  width: 275px;
-  height: 275px;
+  width: 325px;
+  height: 325px;
   perspective: 500px; /* Remove this if you don't want the 3D effect */
   display:inline-block;
-  margin-right: 100px;
-  margin-right: 100px;
+  margin-right: 50px;
+  margin-right: 50px;
 }
 
 /* This container is needed to position the front and back side */
@@ -101,8 +101,8 @@ a:hover {
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   backface-visibility: hidden;
 }
 
@@ -118,17 +118,17 @@ a:hover {
   border-radius: 250px;
   transform: rotateY(180deg);
   text-align: center;
-  padding: 50px;
+  padding: 30px;
 }
 
 .flip-card-back-text {
   border-radius: 250px;
   vertical-align: middle;
-  width: 275px;
-  height: 275px;
+  width: 225px;
+  height: 225px;
   margin: 0 auto;
-  font-size: 13px;
-  margin-top: 40px;
+  font-size: 12px;
+  margin-top: 25px;
   font-family: monospace;
   text-align: justify;
   vertical-align: middle;
