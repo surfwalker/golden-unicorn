@@ -105,10 +105,12 @@ body {
   position: absolute;
   margin-left: 30px;
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 600px;
   font-family: monospace;
   text-shadow: 3px 3px 10px #f818c0;
   border-radius: 80px;
+
 }
 
 #spins {
@@ -173,7 +175,7 @@ body {
   font-size: 15px;
   font-weight: bold;
   width: 75px;
-  background-color: rgb(243, 18, 138);
+  background-color: rgb(255, 28, 336);
   transition: 0.05s;
   border-radius: 80px;
   padding:5px;
@@ -256,7 +258,7 @@ body {
   position: absolute;
   width: 5px;
   height: 5px;
-  color: cyan;
+  color: rgb(28, 183, 255);
   top: 250px;
   left: 465px;
   visibility: hidden;
