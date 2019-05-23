@@ -7,7 +7,7 @@ var allPlayers = [];
 function Player(name, pointsArray) {
 	this.name = name;
 	// hard coding this.points array for testing purposes
-	this.pointsArray = [100,200,300,400,500,600];
+	this.pointsArray = [100,200,300,400];
 	allPlayers.push(this);
 }
 

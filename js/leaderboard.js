@@ -45,14 +45,7 @@ function renderLeaderboard(array) {
     var tdEl = document.createElement('td');
     tdEl.textContent = array[i].name;
     trEl.appendChild(tdEl);
-
-		// create, content, append points for each spin
-		// for (var j = 0; j < array[i].pointsArray.length; j++) {
-		// 	tdEl = document.createElement('td');
-		// 	tdEl.textContent = array[i].pointsArray[j];
-		// 	trEl.appendChild(tdEl);
-    // }
-    
+   
     for (var j = 0; j < 7; j++) {
       tdEl = document.createElement('td');
       if (j >= array[i].length) {
