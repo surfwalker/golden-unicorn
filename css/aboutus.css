@@ -68,17 +68,18 @@ body{
     border-color: black;
     border-style: solid;
     width: 800px;
-    height: 420px;
+    height: 550px;
     padding: 10px;
     box-shadow: inset 0 0 8px #f818c0;
     margin: 0 auto;
     position: relative;
+    font-family: monospace;
    
 }
 
 #alex-box{
     background-color: whitesmoke;
-    height: 410px;
+    height: 550px;
     width: 260px;
     border:black;
     border-style: solid;
@@ -93,7 +94,7 @@ body{
 
 #sarah-box{
     background-color: whitesmoke;
-    height: 410px;
+    height: 550px;
     width: 260px;
     border:black;
     border-style: solid;
@@ -108,7 +109,7 @@ body{
 
 #sara-box{
     background-color:whitesmoke;
-    height: 410px;
+    height: 550px;
     width: 260px;
     border:black;
     border-style: solid;
