@@ -1,0 +1,36 @@
+#banner {
+    width: 600px;
+    height: 90px;
+    margin-left: 190px; 
+    padding: 10px;
+  }
+
+body {
+    background: url('../img/unicorn-nebula.jpg');
+    background-size: 80em;
+    background-repeat: no-repeat;
+  } 
+
+  nav{
+      background-color: whitesmoke;
+      display: inline-flex;
+      height: 12em;
+      width: 7em;
+      float: left;
+      font-size: 15px;
+      line-height: 2em;
+      padding: 5px;
+      border-radius: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+
+  }
+
+a {
+	color:black;
+	text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+}
