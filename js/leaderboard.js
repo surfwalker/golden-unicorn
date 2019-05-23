@@ -7,6 +7,27 @@ allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
 var arrayLength = allPlayers.length;
 
+
+function totalAllPoints(array) {
+	var totalPoints = 0;
+	for (var i = 0; i < array.pointsArray.length; i++) {
+		totalPoints = totalPoints + array.pointsArray[i];
+	}
+	return totalPoints;
+}
+
+function orderLeaderboard(array) {
+  var tempArray = JSON.parse(JSON.stringify(array));
+  for (var i = 0; i < tempArray.length; i++) {
+    tempArray[i].pointsArray.push(totalAllPoints(tempArray[i]));
+  }
+  tempArray = tempArray.sort(function(a, b){return b.pointsArray[b.pointsArray.length-1]-a.pointsArray[a.pointsArray.length-1]});
+  for (var j = 0; j < tempArray.length; j++) {
+    tempArray[j].pointsArray.pop();
+  }
+  renderLeaderboard(tempArray);
+}
+
 function makeHeaderRow() {
 
   // create the row
@@ -58,7 +79,7 @@ function renderLeaderboard(array) {
 
 		// create, content, append for daily total
 		tdEl = document.createElement('td');
-		tdEl.textContent = array[i].totalAllPoints();
+		tdEl.textContent = totalAllPoints(array[i]);
 		trEl.appendChild(tdEl);
 
   // append the tr to the table
@@ -67,4 +88,4 @@ function renderLeaderboard(array) {
 }
 
 loadFromLocalStorage(allPlayers, arrayLength);
-renderLeaderboard(allPlayers);
+orderLeaderboard(allPlayers);
