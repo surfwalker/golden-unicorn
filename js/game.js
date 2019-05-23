@@ -32,6 +32,9 @@ var slowDownFactor = .985;
 // Button for event listener
 var spinButton = document.getElementById('spinButton');
 
+// get objects array from localStorage
+allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
+
 function SliceEnd(num) {
   this.id = 'sliceEnd_' + num;
   this.isCat = false;
@@ -259,6 +262,7 @@ function sliceLandedOn(closestSlice){
       unicornToChange.turnIntoCat(true);
       unicornArray = [];
       points -=200;
+      allPlayers[allPlayers.length - 1].pointsArray.push(-250);
     }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
@@ -266,12 +270,14 @@ function sliceLandedOn(closestSlice){
     catToChange.turnIntoUnicorn(true);
     catArray = [];
     points += 500;
+    allPlayers[allPlayers.length - 1].pointsArray.push(500);
   } else if (closestSlice.isUnicorn){
     var catArray = formCatArray();
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
     catToChange.turnIntoUnicorn(true);
     catArray = [];
     points += 200;
+    allPlayers[allPlayers.length - 1].pointsArray.push(200);
   }
   if (spins > 0){
     spinButton.disabled = false;
@@ -404,6 +410,8 @@ for (var i = 1; i < numSlices; i += 2) {
 
 sliceEnds[0].turnIntoGoldenUnicorn();
 
+// load player objects from allPlayers array
+loadFromLocalStorage(allPlayers, allPlayers.length);
 
 // Event listener for clicking the spin button
 spinButton.addEventListener('click', handleSpinButton);
