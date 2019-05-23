@@ -3,10 +3,11 @@
 // grabbing playerForm DOM element in index.html
 var playerForm = document.getElementById('playerform');
 
-var saveToLocalStorage = function(arr) {
-  var stringifiedPlayers = JSON.stringify(arr);
-  localStorage.setItem('playersStorage', stringifiedPlayers);
-};
+if (JSON.parse(localStorage.getItem('playersStorage')).length > 0) {
+  allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
+  var arrayLength = allPlayers.length;
+  loadFromLocalStorage(allPlayers, arrayLength);
+}
 
 function handleNewPlayerSubmit(event) {
 

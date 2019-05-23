@@ -3,21 +3,9 @@
 // grabbing leaderboardTable DOM element in leaderboard.html
 var leaderboardTable = document.getElementById('leaderboard-table');
 
-var allPlayers = [];
 allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
 var arrayLength = allPlayers.length;
-
-function loadFromLocalStorage(dataArray, length) {
-  for (var i = 0; i < length; i++) {
-    new Player(dataArray[i].name);
-  }
-
-  // iteration through array and remove first half
-  for (var j = 0; j < length; j++) {
-    dataArray.shift();
-  }
-}
 
 function makeHeaderRow() {
 
@@ -59,11 +47,21 @@ function renderLeaderboard(array) {
     trEl.appendChild(tdEl);
 
 		// create, content, append points for each spin
-		for (var j = 0; j < array[i].points.length; j++) {
-			tdEl = document.createElement('td');
-			tdEl.textContent = array[i].points[j];
-			trEl.appendChild(tdEl);
-		}
+		// for (var j = 0; j < array[i].pointsArray.length; j++) {
+		// 	tdEl = document.createElement('td');
+		// 	tdEl.textContent = array[i].pointsArray[j];
+		// 	trEl.appendChild(tdEl);
+    // }
+    
+    for (var j = 0; j < 7; j++) {
+      tdEl = document.createElement('td');
+      if (j >= array[i].length) {
+        
+      } else {
+        tdEl.textContent = array[i].pointsArray[j];
+      }
+      trEl.appendChild(tdEl);
+    }
 
 		// create, content, append for daily total
 		tdEl = document.createElement('td');
