@@ -45,10 +45,7 @@ a:hover {
   padding: 8px;
 }
 
-/* main {
-	width: 960px;
-	margin: 30px auto;
-} */
+
 
 #laser-kitteh {
 	float: right;
@@ -76,7 +73,7 @@ a:hover {
 }
 
 #legend {
-  background-color: #ffae00;
+  /* background-color: #ffae00; */
   height: 80px;
   width: 350px;
   text-align: center;
@@ -84,6 +81,10 @@ a:hover {
   font-size: 20px;
   font-weight: bold;
   border-radius: 80px;
+  background-color: #f2cd54;
+  background-image: linear-gradient(319deg, #da2ada 0%, #f2cd54 37%, #569ac7 100%);
+  
+
 }
 
 #submit-user-info {
@@ -106,7 +107,7 @@ button {
 }
 
 button:hover {
-background: rgb(195, 69, 253);
+background: #f818c0;
 }
 
 body {
