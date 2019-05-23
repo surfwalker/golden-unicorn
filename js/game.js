@@ -11,12 +11,13 @@ var spinsRemaining = document.getElementById('spins');
 var leaderboard = document.getElementById('leaderboard');
 var imageSlideInUnicorn = document.getElementById('imageSlideInUnicorn');
 var imageSlideInCat = document.getElementById('imageSlideInCat');
+var imageSlideInRainbowUnicorn = document.getElementById('imageSlideInRainbowUnicorn');
 var leaderboardMessage = document.getElementById('leaderboardMessage');
 var roulette = document.getElementById('roulette');
 var score = document.getElementById('score');
 var unicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-512.png';
 var catImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Kitten-512.png';
-var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png';
+var goldenUnicornImageUrl = 'https://raw.githubusercontent.com/surfwalker/golden-unicorn/master/img/Unicorn-Gold-512.png'
 var points = 0;
 var heartProgress = document.getElementById('heartProgress');
 var renderedScoreYet = false;
@@ -284,7 +285,7 @@ function sliceLandedOn(closestSlice){
   } else {
     spinButton.disabled = true;
     // INSERT LEADERBOARD DROP DOWN IF's
-    bringDownLeaderboardCat();
+    bringDownLeaderboardRainbow();
   }
   renderScoreSpins();
 }
@@ -400,6 +401,13 @@ function bringDownLeaderboardCat(){
   saveToLocalStorage(allPlayers);
 }
 
+function bringDownLeaderboardRainbow(){
+  leaderboard.style.top = '95px';
+  leaderboardMessage.innerHTML = 'The battle still wages on! Play again to save the unicorns from the Laser Kittehs!';
+  imageSlideInRainbowUnicorn.style.top ='295px';
+  roulette.style.opacity = '0.4';
+  saveToLocalStorage(allPlayers);
+}
 
 // Create the slices
 for (var i = 0; i < numSlices; i++) {

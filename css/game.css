@@ -36,6 +36,16 @@ body {
   transition: 2800ms;
 }
 
+#imageSlideInRainbowUnicorn {
+  height: 175px;
+  width: 175px;
+  z-index: +1;
+  position: absolute;
+  margin-left: 285px;
+  top: -1000px;
+  transition: 2800ms;
+}
+
 #leaderboard {
   height: 300px;
   width: 300px;
