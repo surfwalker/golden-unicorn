@@ -66,7 +66,15 @@ float: left;
 margin-top: 20px;
 height: 200px;
 width: 200px;
+-moz-transform: scaleX(-1);
+-o-transform: scaleX(-1);
+-webkit-transform: scaleX(-1);
+transform: scaleX(-1);
+filter: FlipH;
+-ms-filter: "FlipH";
 }
+  
+
 
 a{
 color:whitesmoke;
