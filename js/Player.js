@@ -11,15 +11,6 @@ function Player(name, pointsArray) {
 	allPlayers.push(this);
 }
 
-// Player method for totalling all points
-Player.prototype.totalAllPoints = function() {
-	var totalPoints = 0;
-	for (var i = 0; i < this.pointsArray.length; i++) {
-		totalPoints = totalPoints + this.pointsArray[i];
-	}
-	return totalPoints;
-}
-
 function saveToLocalStorage(arr) {
 	var stringifiedPlayers = JSON.stringify(arr);
 	localStorage.setItem('playersStorage', stringifiedPlayers);
