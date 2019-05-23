@@ -75,6 +75,15 @@ body{
     font-family: monospace;
    
 }
+.alex-img{
+    height: 250px;
+}
+.sarah-img{
+    height: 250px;
+}
+.sara-img{
+    height: 250px;
+}
 
 #alex-box{
     background-color: whitesmoke;

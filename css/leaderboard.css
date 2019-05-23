@@ -121,7 +121,7 @@ a:hover {
     background-color: rgb(131, 197, 241);
     box-shadow: inset 0 0 10px rgb(228, 241, 252);
   }
-  #golden:hover {
+  .wiggle:hover {
     animation: shake 0.5s; 
     animation-iteration-count: infinite; 
   }
@@ -304,4 +304,7 @@ a:hover {
     80%, 99.9% {
       margin-top: 30%;
       margin-left: 80%; } }
+
+      /***********Fireworks Provided By Code Pen:
+      https://codepen.io/yshlin/pen/ylDEk?editors=1100 */
   
