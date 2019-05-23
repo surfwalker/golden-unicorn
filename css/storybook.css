@@ -1,11 +1,25 @@
+.avatarImage {
+  width: 250px;
+  height: 250px;
+}
+
+.avatarBar {
+  width: 1200px;
+  height: 350px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 300px;
+  text-align: center;
+}
+
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
-  margin-left: 500px;
-  margin-top: 200px;
   background-color: transparent;
-  width: 500px;
-  height: 500px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  width: 250px;
+  height: 250px;
+  perspective: 500px; /* Remove this if you don't want the 3D effect */
+  display:inline-block;
+  margin-right: 50px;
 }
 
 /* This container is needed to position the front and back side */
@@ -17,6 +31,7 @@
   vertical-align: middle;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  display: inline-block;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -48,17 +63,16 @@
 
 .flip-card-back-text {
   border-radius: 250px;
-  margin-top: 100px;
   vertical-align: middle;
-  margin-left: 130px;
-  width: 250px;
+  width: 200px;
   height: 200px;
-  font-size: 16px;
+  margin: 0 auto;
+  font-size: 14px;
+  margin-top: 50px;
   font-family: monospace;
-
+  font-weight: bold;
 }
 
 body {
-  width: 1200px;
-  height: 1200px;
+  background: url('../img/astronomy-dark.jpg');
 }

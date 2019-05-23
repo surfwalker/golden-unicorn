@@ -61,7 +61,10 @@ function SliceEnd(num) {
         // Do a pow animation where the image is right now
         var iconRect = iconEl.getBoundingClientRect();
         var wrapperRect = wrapperEl.getBoundingClientRect();
-        doPow(iconRect.left - wrapperRect.left, iconRect.top - wrapperRect.top);
+        doPow(
+          iconRect.left - wrapperRect.left + 25, 
+          iconRect.top - wrapperRect.top + 25
+        );
 
         // When the pow is biggest, change the image
         setTimeout(function() {
@@ -76,7 +79,7 @@ function SliceEnd(num) {
   this.turnIntoGoldenUnicorn = function() {
     var iconId = this.id + '_icon';
     var iconEl = document.getElementById(iconId);
-    this.cashValue = 500;
+    this.cashValue = 400;
     this.isGolden = true;
     this.isUnicorn = false;
     iconEl.setAttributeNS(svgxlink, 'href', goldenUnicornImageUrl);
@@ -205,7 +208,7 @@ function onTimerTick() {
   }
 
   if (!renderedScoreYet && heartProgress.ldBar !== null){
-    renderScoreSpins();
+    setTimeout(renderScoreSpins, 500);
     renderedScoreYet = true;
   }
 }
@@ -305,13 +308,13 @@ function formCatArray(){
 function doPow(x, y) {
   // In the CSS our animation duration is 200ms
   // so, when we "setTimeout" we take that into account
+  var bigSizeW = 363 / 2;
+  var bigSizeH = 345 / 2;
   var smallSizeW = 40;
-  var smallSizeH = 30;
-  var bigSizeW = 260;
-  var bigSizeH = bigSizeW * (smallSizeH/smallSizeW);
+  var smallSizeH = smallSizeW * (bigSizeH/bigSizeW);
 
   var img = document.createElement('img');
-  img.setAttribute('src', 'img/pow.png');
+  img.setAttribute('src', 'img/poof2.png');
   img.classList.add('pow');
   img.style.width = smallSizeW + 'px';
   img.style.height = smallSizeH + 'px';
@@ -348,6 +351,10 @@ function updateScoreOnHeart() {
   var percent = (points + 500) * 100 / maxScore;
   if (percent > 100) {
     percent = 100;
+  }
+
+  if (percent < 0) {
+    percent = 0;
   }
 
   if (heartProgress.ldBar != null) {
