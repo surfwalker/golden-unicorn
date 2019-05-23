@@ -2,11 +2,10 @@
 
 // grabbing playerForm DOM element in index.html
 var playerForm = document.getElementById('playerform');
+allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
-if (JSON.parse(localStorage.getItem('playersStorage')).length > 0) {
-  allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
-  var arrayLength = allPlayers.length;
-  loadFromLocalStorage(allPlayers, arrayLength);
+if (allPlayers.length > 0) {
+  loadFromLocalStorage(allPlayers, allPlayers.length);
 }
 
 function handleNewPlayerSubmit(event) {
