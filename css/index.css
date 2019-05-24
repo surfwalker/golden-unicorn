@@ -43,22 +43,95 @@ a:hover {
   padding: 8px;
 }
 
-#laser-kitteh {
-	float: right;
-  margin-right: auto;
-  margin-left: auto;
+#bottomArea {
+  position: relative;
+}
+
+#conversation {
+  position: absolute;
+  width: 100%;
+}
+
+#instructions {
+  position: relative;
+  width: 600px;
+  height: 200px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 130%;
+  color: white;
+  top: 40px;
+  text-align: center;
+}
+
+#laser-kitteh-side {
+  float: right;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+}
+
+#unicorn-side {
+  position: relative;
   height: 250px;
   width: 250px;
-  padding: 40px;
+  display: inline-block;
+}
+
+#laser-kitteh {
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 #golden-unicorn{
   height: 250px;
   width: 250px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 40px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
+#unicornTextBubble .bubbleText {
+  padding-left: 20px;
+}
+
+#unicornTextBubble {
+  background-image: url("../img/textBubbleLeft.png");
+  background-size: 250px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: -130px;
+  left: 80px;
+  transition: all 0.5s;
+  opacity: 0;
+  text-align: center;
+}
+
+#catTextBubble {
+  background-image: url("../img/textBubbleRight.png");
+  background-size: 250px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: -130px;
+  left: -80px;
+  transition: all 0.5s;
+  opacity: 0;
+  text-align: center;
+}
+
+.bubbleText {
+  display: table-cell;
+  text-align: center;
+  height: 180px;
+  vertical-align: middle;
+  width: 240px;
+  font-size: 16px;
+}
 
 #banner {
   width: 725px;
@@ -116,4 +189,42 @@ body {
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
+}
+
+.wiggle:hover {
+  animation: shake 0.5s; 
+  animation-iteration-count: infinite; 
+}
+
+.wiggle-flip:hover {
+  animation: shake-flip 0.5s; 
+  animation-iteration-count: infinite; 
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes shake-flip {
+  0% { transform: translate(1px, 1px) rotate(0deg) scaleX(-1); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg) scaleX(-1); }
+  20% { transform: translate(-3px, 0px) rotate(1deg) scaleX(-1); }
+  30% { transform: translate(3px, 2px) rotate(0deg) scaleX(-1); }
+  40% { transform: translate(1px, -1px) rotate(1deg) scaleX(-1); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg) scaleX(-1); }
+  60% { transform: translate(-3px, 1px) rotate(0deg) scaleX(-1); }
+  70% { transform: translate(3px, 1px) rotate(-1deg) scaleX(-1); }
+  80% { transform: translate(-1px, -1px) rotate(1deg) scaleX(-1); }
+  90% { transform: translate(1px, 2px) rotate(0deg) scaleX(-1); }
+  100% { transform: translate(1px, -2px) rotate(-1deg) scaleX(-1); }
 }
