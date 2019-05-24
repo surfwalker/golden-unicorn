@@ -54,10 +54,10 @@ a:hover {
 
 #instructions {
   position: relative;
-  width: 600px;
+  width: 550px;
   height: 200px;
   margin: 0 auto;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 130%;
   color: white;
   top: 40px;
@@ -130,7 +130,7 @@ a:hover {
   height: 180px;
   vertical-align: middle;
   width: 240px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #banner {
