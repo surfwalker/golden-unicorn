@@ -1,11 +1,9 @@
 /* ENTIRE PAGE */
 * {
-  /* font-family: Arial, sans-serif; */
   font-family: monospace;
 }
 
 body {
-    /* font-family: helvetica, sans-serif; */
     font-family: monospace;
   }
   
@@ -45,8 +43,6 @@ a:hover {
   padding: 8px;
 }
 
-
-
 #laser-kitteh {
 	float: right;
   margin-right: auto;
@@ -58,7 +54,6 @@ a:hover {
 #golden-unicorn{
   height: 250px;
   width: 250px;
-  /* margin-bottom: 200px; */
   margin-left: auto;
   margin-right: auto;
   padding: 40px;
@@ -66,14 +61,13 @@ a:hover {
 
 
 #banner {
-  width: 700px;
-  height: 100px;
+  width: 725px;
+  height: 140px;
 	margin-left: 200px; 
   padding: 30px;
 }
 
 #legend {
-  /* background-color: #ffae00; */
   height: 80px;
   width: 350px;
   text-align: center;
