@@ -7,14 +7,15 @@ nav {
   text-align: center;
   font-family: monospace;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 header li{
   display: inline-block;
   width: 170px;
   margin: 0px auto;
-  text-align: center;   
+  text-align: center;
+  margin-top: 10px;   
 }
 
 header li:first-child{
@@ -48,8 +49,8 @@ a:hover {
    padding: 30px;
  }
   #banner {
-      width: 650px;
-      height: 110px;
+      width: 550px;
+      height: 100px;
       padding: 20px;
       text-align: center; 
       margin: 0px auto;

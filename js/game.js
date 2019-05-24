@@ -198,13 +198,6 @@ function onTimerTick() {
   rotationSpeed *= slowDownFactor;
   disc.setAttribute('transform', 'rotate(' + discAngle + ' 250 250)');
 
-  // this is to verify our idea of selecting the right thing works
-  // rightmost = getRightmostSlice();
-  // for (var i = 0; i < numSlices; i++) {
-  //   sliceEnds[i].slicePath.setAttribute("fill", "white");
-  // }
-  // rightmost.slicePath.setAttribute("fill", "blue");
-
   if (rotationSpeed > 0 && rotationSpeed < 0.01) {
     rotationSpeed = 0;
     var winnerSlice = getRightmostSlice();
@@ -262,23 +255,23 @@ function sliceLandedOn(closestSlice){
       var unicornToChange = unicornArray[Math.floor(Math.random()*unicornArray.length)];
       unicornToChange.turnIntoCat(true);
       unicornArray = [];
-      points -=200;
-      allPlayers[allPlayers.length - 1].pointsArray.push(-200);
+      points -=150;
+      allPlayers[allPlayers.length - 1].pointsArray.push(-150);
     }
   } else if (closestSlice.isGolden){
     var catArray = formCatArray();
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
     catToChange.turnIntoUnicorn(true);
     catArray = [];
-    points += 500;
-    allPlayers[allPlayers.length - 1].pointsArray.push(500);
+    points += 700;
+    allPlayers[allPlayers.length - 1].pointsArray.push(700);
   } else if (closestSlice.isUnicorn){
     var catArray = formCatArray();
     var catToChange = catArray[Math.floor(Math.random()*catArray.length)];
     catToChange.turnIntoUnicorn(true);
     catArray = [];
-    points += 200;
-    allPlayers[allPlayers.length - 1].pointsArray.push(200);
+    points += 150;
+    allPlayers[allPlayers.length - 1].pointsArray.push(150);
   }
   if (spins > 0){
     spinButton.disabled = false;
@@ -385,25 +378,28 @@ function renderScoreSpins(){
   updateScoreOnHeart();
 }
 
+// This function is called when you win
 function bringDownLeaderboardUnicorn(){
   leaderboard.style.top = '95px';
-  leaderboardMessage.innerHTML = 'You have defeated the evil laser kitteh!!!';
+  leaderboardMessage.innerHTML = 'You have defeated the evil Laser Kitteh!!!';
   imageSlideInUnicorn.style.top = '295px';
   roulette.style.opacity = '0.4';
   saveToLocalStorage(allPlayers);
 }
 
+// This function is called when you lose
 function bringDownLeaderboardCat(){
   leaderboard.style.top = '95px';
-  leaderboardMessage.innerHTML = 'The evil laser kitteh has prevailed!';
+  leaderboardMessage.innerHTML = 'The evil Laser Kitteh has prevailed!';
   imageSlideInCat.style.top = '295px';
   roulette.style.opacity = '0.4';
   saveToLocalStorage(allPlayers);
 }
 
+// This function is called when you do not win or lose
 function bringDownLeaderboardRainbow(){
   leaderboard.style.top = '95px';
-  leaderboardMessage.innerHTML = 'The battle still wages on! Play again to save the unicorns from the Laser Kittehs!';
+  leaderboardMessage.innerHTML = 'The battle still wages on! Play again to save the Unicorns from the Laser Kittehs!';
   imageSlideInRainbowUnicorn.style.top ='295px';
   roulette.style.opacity = '0.4';
   saveToLocalStorage(allPlayers);
