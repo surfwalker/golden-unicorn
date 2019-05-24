@@ -215,8 +215,8 @@ function handleSpinButton(event){
   // event.preventDefault();
   spinButton.disabled = true;
   spins--;
-  renderScoreSpins();
   rotationSpeed = getRandomIntInclusive(50, 150);
+  renderScoreSpins();
 }
 
 function getRandomIntInclusive(min, max) {
@@ -365,7 +365,7 @@ function updateScoreOnHeart() {
   } else if (percent === 0) {
     spinButton.disabled = true;
     bringDownLeaderboardCat();
-  } else if (spins === 0) {
+  } else if (spins === 0 && rotationSpeed === 0) {
     // INSERT LEADERBOARD DROP DOWN IF's
     bringDownLeaderboardRainbow();
   }
