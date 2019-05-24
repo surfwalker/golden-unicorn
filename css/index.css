@@ -63,7 +63,7 @@ a:hover {
 #banner {
   width: 725px;
   height: 140px;
-	margin-left: 200px; 
+  text-align: center;
   padding: 30px;
 }
 
