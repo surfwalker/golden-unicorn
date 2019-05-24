@@ -49,11 +49,11 @@ a:hover {
 
 #laser-kitteh {
 	float: right;
-	margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
   height: 250px;
   width: 250px;
+  padding: 40px;
 }
 #golden-unicorn{
   height: 250px;
