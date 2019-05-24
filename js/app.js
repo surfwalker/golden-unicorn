@@ -2,6 +2,7 @@
 
 // grabbing playerForm DOM element in index.html
 var playerForm = document.getElementById('playerform');
+
 allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
 if (allPlayers.length > 0) {
