@@ -277,8 +277,6 @@ function sliceLandedOn(closestSlice){
     spinButton.disabled = false;
   } else {
     spinButton.disabled = true;
-    // INSERT LEADERBOARD DROP DOWN IF's
-    bringDownLeaderboardRainbow();
   }
   renderScoreSpins();
 }
@@ -364,11 +362,12 @@ function updateScoreOnHeart() {
   if (percent === 100) {
     spinButton.disabled = true;
     bringDownLeaderboardUnicorn();
-  }
-
-  if (percent === 0) {
+  } else if (percent === 0) {
     spinButton.disabled = true;
     bringDownLeaderboardCat();
+  } else if (spins === 0) {
+    // INSERT LEADERBOARD DROP DOWN IF's
+    bringDownLeaderboardRainbow();
   }
 }
 
