@@ -1,38 +1,26 @@
-
-nav {
-  font-size: 20px; 
-  display: block; 
-  margin: 0px auto;
-  position: relative;
-  text-align: center;
+header {
+  height: 100px;
   font-family: monospace;
-  font-weight: bold;
-  margin-top: 30px;
 }
 
-header li{
-  display: inline-block;
-  width: 170px;
+nav {
+	width: 1100px;
+	margin: 0px auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+  
+header li {
+	display: inline-block;
+  width: 180px;
   margin: 0px auto;
+  margin-top: 30px;
   text-align: center;
-  margin-top: 10px;   
 }
 
 header li:first-child{
-  display: inline-block;
-  width: 170px;
-  margin: 0px auto;
-  text-align: center;  
-} 
-
-
-header li:last-child{
-  display: inline-block;
-  margin: 0 auto;
-  width: 170px;
-  margin: 0px auto;
-  text-align: center;  
-} 
+	margin-left: 50px;
+}
 
 a {
 	color:whitesmoke;
@@ -59,14 +47,21 @@ a:hover {
   #golden{
       width: 250px;
       height: 250px;
-      right: 0;
+      left: 0;
       position: fixed;
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
   }
   #kitteh{
       width: 250px;
       height: 250px;
-      left: 0;
+      right: 0;
       position: fixed;
+
   }
 
   body {
@@ -124,22 +119,41 @@ a:hover {
   }
   .wiggle:hover {
     animation: shake 0.5s; 
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
   }
   
   @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% { transform: translate(1px, 1px) rotate(0deg) scale(-1, 1); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg) scale(-1, 1); }
+    20% { transform: translate(-3px, 0px) rotate(1deg) scale(-1, 1); }
+    30% { transform: translate(3px, 2px) rotate(0deg) scale(-1, 1); }
+    40% { transform: translate(1px, -1px) rotate(1deg) scale(-1, 1); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg) scale(-1, 1); }
+    60% { transform: translate(-3px, 1px) rotate(0deg) scale(-1, 1); }
+    70% { transform: translate(3px, 1px) rotate(-1deg) scale(-1, 1); }
+    80% { transform: translate(-1px, -1px) rotate(1deg) scale(-1, 1); }
+    90% { transform: translate(1px, 2px) rotate(0deg) scale(-1, 1); }
+    100% { transform: translate(1px, -2px) rotate(-1deg) scale(-1, 1); }
   }
+
+.wiggle-no-flip:hover {
+  animation: shake-no-flip 0.5s; 
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake-no-flip {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg) ; }
+  30% { transform: translate(3px, 2px) rotate(0deg) ; }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg) ; }
+  70% { transform: translate(3px, 1px) rotate(-1deg) ; }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg) ; }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
 
 .pyro{
   position: absolute;
@@ -306,6 +320,20 @@ a:hover {
       margin-top: 30%;
       margin-left: 80%; } }
 
-      /***********Fireworks Provided By Code Pen:
-      https://codepen.io/yshlin/pen/ylDEk?editors=1100 */
-  
+      /* #golden-unicorn{
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+      .wiggle{
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH"; */
+      
+/* } */
