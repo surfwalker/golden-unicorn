@@ -7,7 +7,7 @@ var goldenUnicornStory = document.getElementById('goldenunicornstory');
 
 //Functions to handle sound effects
 function unicornsStoryBook () {
-	document.getElementById('unicorns').play();
+document.getElementById('unicorns').play();
 }
 
 function laserKittehStoryBook () {
