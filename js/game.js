@@ -36,6 +36,8 @@ var spinButton = document.getElementById('spinButton');
 // get objects array from localStorage
 allPlayers = JSON.parse(localStorage.getItem('playersStorage')) || [];
 
+// I used a codebase found on https://codepen.io/MourningWood/pen/QyMMre for the wheel. However, it is vastly different than it was to begin with. (See link for example)
+// Constructor that builds the wheel
 function SliceEnd(num) {
   this.id = 'sliceEnd_' + num;
   this.isCat = false;
@@ -53,6 +55,7 @@ function SliceEnd(num) {
   // Store the svg object in case we want to use it later
   var svgForSlice = this.createSvgSlice(num);
 
+  // This function will turn an icon into a cat if a true/doAnimation value argument is used. If the argument is false, then it will not do the poof animation, but just change the icon. I have the animation as an option because at the beginning, the wheel changes every other icon into a cat and I did not want animations for this part.
   this.turnIntoCat = function(doAnimation) {
     var iconId = this.id + '_icon';
     var iconEl = document.getElementById(iconId);
@@ -80,6 +83,7 @@ function SliceEnd(num) {
     }
   };
 
+  // This changes the first icon into the Golden Unicorn at the beginning of the game without animation (the poof).
   this.turnIntoGoldenUnicorn = function() {
     var iconId = this.id + '_icon';
     var iconEl = document.getElementById(iconId);
@@ -89,6 +93,7 @@ function SliceEnd(num) {
     iconEl.setAttributeNS(svgxlink, 'href', goldenUnicornImageUrl);
   };
 
+  // This will turn a cat into a unicorn, and the animation is optional just as before.
   this.turnIntoUnicorn = function(doAnimation) {
     var iconId = this.id + '_icon';
     var iconEl = document.getElementById(iconId);
@@ -176,6 +181,7 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   var blue = Math.sin(frequency * num + 4) * 127 + 128;
   sliceEnd.setAttribute('fill', 'rgb('+red+','+green+','+blue+')');
 
+  // This is making reference points for each slice. These are then used to determine which slice is closest to the arrow to deem the winning slice for that spin.
   var referencePoint = document.createElementNS(svgns, 'rect');
   referencePoint.setAttribute('id', this.id + '_ref');
   referencePoint.setAttribute('class', 'sliceRefPoint');
@@ -193,23 +199,27 @@ SliceEnd.prototype.createSvgSlice = function(num) {
   return g;
 };
 
+// The engine of the game. Checks every 10ms (the 10ms is a global variable at the top, and passed through on page load) to see if there is rotation speed. The rotation speed is given when the spin button is clicked. The slowDownFactor variable is global, and is what makes the wheel slow down. As long as it is less than 1, the wheel will slow down.
 function onTimerTick() {
   discAngle += rotationSpeed;
   rotationSpeed *= slowDownFactor;
   disc.setAttribute('transform', 'rotate(' + discAngle + ' 250 250)');
 
+  // We have to force the rotation speed to stop when it gets to less than 0.01, otherwise it will continue for a long time at a rate that is extremely slow.
   if (rotationSpeed > 0 && rotationSpeed < 0.01) {
     rotationSpeed = 0;
     var winnerSlice = getRightmostSlice();
     sliceLandedOn(winnerSlice);
   }
 
+  // Try until the ldBar is loaded (for some reason it takes time for the progress bar to load)
   if (!renderedScoreYet && heartProgress.ldBar !== null){
     setTimeout(renderScoreSpins, 500);
     renderedScoreYet = true;
   }
 }
 
+// Listener for the spin button. When it is clicked, a random number between 50 and 150 is passed into the rotation speed so the wheel will begin to spin. renderScoreSpins is updated to show one less spin.
 function handleSpinButton(event){
 // Set the timer that will update every X ms
   // event.preventDefault();
@@ -219,12 +229,14 @@ function handleSpinButton(event){
   renderScoreSpins();
 }
 
+// This is used to get a random number so the wheel does not spin at the same rate each time.
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
+// This function gets the location of the right most slice so we know which slice wins for that spin, and what function to call as a result. We have to get client cooridinates, otherwise the location will not be correct.
 function getRightmostSlice() {
   var closestSlice = null;
   var closestDistance = 999999;
@@ -248,6 +260,7 @@ function getRightmostSlice() {
   return closestSlice;
 }
 
+// This determines if the closest slice is a unicorn, golden unicorn, or cat, and then calls a function based on the results (i.e. turn unicorn into a cat if the player landed on the cat)
 function sliceLandedOn(closestSlice){
   if (closestSlice.isCat){
     var unicornArray = formUnicornArray();
@@ -281,6 +294,7 @@ function sliceLandedOn(closestSlice){
   renderScoreSpins();
 }
 
+// We need to form a new array of unicorns to choose from if a cat is landed on.
 function formUnicornArray(){
   var unicornArray = [];
   for (var i = 0; i < numSlices; i++){
@@ -291,6 +305,7 @@ function formUnicornArray(){
   return unicornArray;
 }
 
+// We need to form a new array of cats to choose from if a unicorn is landed on.
 function formCatArray(){
   var catArray = [];
   for (var i = 0; i < numSlices; i++){
@@ -304,8 +319,7 @@ function formCatArray(){
 
 // Does a POW animation at the specified location
 function doPow(x, y) {
-  // In the CSS our animation duration is 200ms
-  // so, when we "setTimeout" we take that into account
+  // In the CSS our animation duration is 200ms, so when we "setTimeout" we take that into account
   var bigSizeW = 363 / 2;
   var bigSizeH = 345 / 2;
   var smallSizeW = 40;
@@ -325,8 +339,7 @@ function doPow(x, y) {
     img.style.width = bigSizeW + 'px';
     img.style.height = bigSizeH + 'px';
 
-    // Adjust ourselves so we would be centered
-    // So we wouldn't grow only to our bottom right
+    // Adjust ourselves so we would be centered, so we wouldn't grow only to our bottom right
     img.style.left = (x - ((bigSizeW - smallSizeW) / 2)) + 'px';
     img.style.top = (y - ((bigSizeH - smallSizeH) / 2)) + 'px';
 
@@ -344,6 +357,7 @@ function doPow(x, y) {
   }, 200);
 }
 
+// This updates the progress bar based on the points counter. It currently starts at 50%.
 function updateScoreOnHeart() {
   var maxScore = 1000;
   var percent = (points + 500) * 100 / maxScore;
@@ -366,11 +380,12 @@ function updateScoreOnHeart() {
     spinButton.disabled = true;
     bringDownLeaderboardCat();
   } else if (spins === 0 && rotationSpeed === 0) {
-    // INSERT LEADERBOARD DROP DOWN IF's
+    // If the rotation speed is 0, spins are 0, and the percent is not 0 and not 100 --> bring down the following leaderboard.
     bringDownLeaderboardRainbow();
   }
 }
 
+// This will be called anytime points change or spins change, and update accordingly.
 function renderScoreSpins(){
   score.innerHTML = 'Total Score: ' + points;
   spinsRemaining.innerHTML = 'Spins Remaining: ' + spins;
@@ -382,7 +397,7 @@ function bringDownLeaderboardUnicorn(){
   leaderboard.style.top = '95px';
   leaderboardMessage.innerHTML = 'You have defeated the evil Laser Kitteh!!!';
   imageSlideInUnicorn.style.top = '295px';
-  roulette.style.opacity = '0.4';
+  roulette.style.opacity = '0.4'; // we want to make the wheel darker so the leaderboard drop down shows up better.
   saveToLocalStorage(allPlayers);
 }
 
@@ -391,7 +406,7 @@ function bringDownLeaderboardCat(){
   leaderboard.style.top = '95px';
   leaderboardMessage.innerHTML = 'The evil Laser Kitteh has prevailed!';
   imageSlideInCat.style.top = '295px';
-  roulette.style.opacity = '0.4';
+  roulette.style.opacity = '0.4'; // we want to make the wheel darker so the leaderboard drop down shows up better.
   saveToLocalStorage(allPlayers);
 }
 
@@ -400,7 +415,7 @@ function bringDownLeaderboardRainbow(){
   leaderboard.style.top = '95px';
   leaderboardMessage.innerHTML = 'The battle still wages on! Play again to save the Unicorns from the Laser Kittehs!';
   imageSlideInRainbowUnicorn.style.top ='295px';
-  roulette.style.opacity = '0.4';
+  roulette.style.opacity = '0.4'; // we want to make the wheel darker so the leaderboard drop down shows up better.
   saveToLocalStorage(allPlayers);
 }
 
@@ -413,6 +428,7 @@ for (var i = 1; i < numSlices; i += 2) {
   sliceEnds[i].turnIntoCat(false);
 }
 
+// At the beginning of the game, we want to turn the first Unicorn into a golden one, without animation.
 sliceEnds[0].turnIntoGoldenUnicorn();
 
 // load player objects from allPlayers array
@@ -423,4 +439,3 @@ spinButton.addEventListener('click', handleSpinButton);
 setInterval(onTimerTick, updateMs);
 
 renderScoreSpins();
-
