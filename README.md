@@ -11,9 +11,11 @@
 
 - Players also gain or lose points based on whether they spinning wheel lands on a **Unicorn** or **Laser Kitteh**. 
 
-- If the Player lands on a **Unicorn** they gain 500 points.
+- If the Player lands on the **Golden Unicorn** they gain 700 points.
 
-- If the Player lands on **Laser Kitteh** the earn zero points and some **Unicorns** are removed from gameplay off the spinning wheel. The **Unicorn** placeholders turn into **Kitteh Clones**.
+- If the Player lands on **Laser Kitteh** they earn -150 points and one **Unicorn** is removed from gameplay off the spinning wheel. The **Unicorn** placeholder turns into **Kitteh Clones**.
+
+- If the Player lands on a **Unicorn** they earn 150 points and one **Laser Kitteh** is removed from gameplay off the spinning wheel. The **Laser Kitteh** placeholder turns into a **Unicorn**.
 
 - Player names and win values are put into Local Storage and returned in a Leaderboard Table.
 ***
